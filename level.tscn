@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://g56cif6typsi"]
+[gd_scene load_steps=8 format=3 uid="uid://g56cif6typsi"]
 
 [ext_resource type="PackedScene" uid="uid://drnstqe6wqpm1" path="res://player.tscn" id="1_lin1h"]
 [ext_resource type="PackedScene" uid="uid://b7vfxuh00v87p" path="res://gui.tscn" id="2_wt8e2"]
+[ext_resource type="PackedScene" uid="uid://bsyldo33lixi2" path="res://NPC.tscn" id="3_ieeyi"]
 
 [sub_resource type="Environment" id="Environment_7cvnc"]
 
@@ -40,3 +41,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.67801, 1.57629, 0.819533)
 transform = Transform3D(0.9, 0, 0, 0, 0.208, 0, 0, 0, 0.9, 0, 0.116593, 0)
 shape = SubResource("CylinderShape3D_pkv2p")
 target_position = Vector3(0, -4.5, 0)
+
+[node name="NPC" parent="." instance=ExtResource("3_ieeyi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.39944)

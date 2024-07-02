@@ -18,7 +18,7 @@ func _process(delta: float) -> void:
 	
 	if $"Floor Detection".is_colliding() and Input.is_action_just_pressed("jump"):
 		input.y = 20
-	
+		$"HP".HP -= 10
 	apply_central_force(twist_pivot.basis * input * 1500.0 * delta)
 	
 	var aligned_force = twist_pivot.basis * input
@@ -29,11 +29,16 @@ func _process(delta: float) -> void:
 	twist_pivot.rotate_y(twist_input)
 	pitch_pivot.rotate_x(pitch_input)
 	pitch_pivot.rotation.x = clamp(pitch_pivot.rotation.x, 
-		deg_to_rad(-60), 
-		deg_to_rad(60)
+		deg_to_rad(-90), 
+		deg_to_rad(90)
 	)
 	twist_input = 0.0
 	pitch_input = 0.0
+
+	if $"HP".HP <= 0:
+		for child in self.get_children():
+			child.queue_free()
+
 
 
 func _unhandled_input(event: InputEvent) -> void:
