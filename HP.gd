@@ -1,6 +1,6 @@
 extends Node3D
 
-@export var HP : int = 1
+@export var HP : int = 100
 @export var SHIELD : int = 50 
 @export var cooldown : float = 1.0 
 
@@ -9,7 +9,7 @@ func take_damage(dmg):
 		SHIELD -= dmg
 	else:
 		HP -= dmg
-
+		
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -27,5 +27,4 @@ func _process(delta):
 			HP = 100
 		cooldown = 1.0
 
-	print(HP)
 

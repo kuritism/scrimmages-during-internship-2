@@ -14,8 +14,6 @@
 
 [node name="Node3D" type="Node3D"]
 
-[node name="GUI" parent="." instance=ExtResource("2_wt8e2")]
-
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_7cvnc")
 
@@ -34,13 +32,15 @@ mesh = SubResource("PlaneMesh_s3vur")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
 shape = SubResource("WorldBoundaryShape3D_d3oby")
 
-[node name="Player" parent="." instance=ExtResource("1_lin1h")]
+[node name="NPC" parent="." instance=ExtResource("3_ieeyi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.39944)
+
+[node name="GUI" parent="." instance=ExtResource("2_wt8e2")]
+
+[node name="Player" parent="GUI" instance=ExtResource("1_lin1h")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.67801, 1.57629, 0.819533)
 
-[node name="Floor Detection" type="ShapeCast3D" parent="Player"]
+[node name="Floor Detection" type="ShapeCast3D" parent="GUI/Player"]
 transform = Transform3D(0.9, 0, 0, 0, 0.208, 0, 0, 0, 0.9, 0, 0.116593, 0)
 shape = SubResource("CylinderShape3D_pkv2p")
 target_position = Vector3(0, -4.5, 0)
-
-[node name="NPC" parent="." instance=ExtResource("3_ieeyi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.39944)
