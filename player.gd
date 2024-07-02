@@ -34,6 +34,10 @@ func _process(delta: float) -> void:
 	)
 	twist_input = 0.0
 	pitch_input = 0.0
+	if Input.is_action_pressed("fire"):
+		$Gun_Component.attempt_fire()
+	if Input.is_action_pressed("reload"):
+		$Gun_Component.attempt_reload()
 
 
 func _unhandled_input(event: InputEvent) -> void:
