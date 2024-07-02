@@ -22,8 +22,8 @@ func attempt_fire():
 		var bullet = instancedBull.instantiate()
 		add_child(bullet)
 		bullet.setup(bullet_damage)
-		bullet.position.x=position.x
-		bullet.position.y=position.y - 1
+		bullet.position.x=position.x - 1
+		bullet.position.y=position.y - 0.5
 		bullet.reparent(root)
 	num_bullets -= 1
 	can_fire = false
