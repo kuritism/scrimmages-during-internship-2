@@ -30,7 +30,7 @@ shape = SubResource("CapsuleShape3D_3eqj2")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.499952, -0.495036)
 
 [node name="Gun Component" type="Node3D" parent="TwistPivot/PitchPivot"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -0.896427)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.5, -1.5)
 script = ExtResource("2_gls47")
 
 [node name="Chamber_Time" type="Timer" parent="TwistPivot/PitchPivot/Gun Component"]
