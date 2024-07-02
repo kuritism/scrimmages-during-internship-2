@@ -19,7 +19,7 @@ func _process(delta: float) -> void:
 	if $"Floor Detection".is_colliding() and Input.is_action_just_pressed("jump"):
 		input.y = 20
 	
-	apply_central_force(twist_pivot.basis * input * 1200.0 * delta)
+	apply_central_force(twist_pivot.basis * input * 1500.0 * delta)
 	
 	var aligned_force = twist_pivot.basis * input
 	

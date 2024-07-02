@@ -8,6 +8,8 @@
 
 [node name="Player" type="RigidBody3D"]
 lock_rotation = true
+linear_damp_mode = 1
+linear_damp = 2.0
 script = ExtResource("1_ve33o")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
