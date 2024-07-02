@@ -6,7 +6,6 @@ var pitch_input := 0.0
 
 @onready var twist_pivot := $TwistPivot
 @onready var pitch_pivot := $TwistPivot/PitchPivot
-@onready var gun := $"TwistPivot/PitchPivot/Gun Component"
 
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -36,9 +35,9 @@ func _process(delta: float) -> void:
 	twist_input = 0.0
 	pitch_input = 0.0
 	if Input.is_action_pressed("fire"):
-		gun.attempt_fire()
+		$"Gun Component".attempt_fire()
 	if Input.is_action_pressed("reload"):
-		gun.attempt_reload()
+		$"Gun Component".attempt_reload()
 
 	if $"HP".HP <= 0:
 		for child in self.get_children():
