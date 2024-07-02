@@ -6,12 +6,12 @@ var can_fire = true
 @export var num_reloads : int = 3
 @export var chamber_time : float = 0.3
 @export var reload_time : float = 1
-@export var bullet_speed : float = 5
+@export var bullet_speed : float = 20
 @export var bullet_damage : int = 10
 @export var bullet_spread : float
 @export var shell_amount : int = 1
-var num_bullets = mag_size
-var additional_bullets = mag_size * num_reloads
+@export var num_bullets = mag_size
+@export var additional_bullets = mag_size * num_reloads
 # Called when the node enters the scene tree for the first time.
 func attempt_fire():
 	if !can_fire:

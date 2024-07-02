@@ -13,14 +13,21 @@ mouse_filter = 2
 script = ExtResource("1_1q5o7")
 
 [node name="ColorRect" type="ColorRect" parent="."]
-visible = false
 layout_mode = 0
 offset_right = 157.0
 offset_bottom = 48.0
 color = Color(0.733667, 0.53, 1, 1)
 
-[node name="Label" type="Label" parent="."]
+[node name="HPLabel" type="Label" parent="."]
 layout_mode = 0
 offset_right = 414.0
 offset_bottom = 261.0
 text = "test"
+
+[node name="AMMOLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 1066.0
+offset_top = 610.0
+offset_right = 1106.0
+offset_bottom = 633.0
+text = "Test"
