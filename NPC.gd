@@ -9,6 +9,5 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if $"HP".HP <= 0:
-		for child in self.get_children():
-			child.queue_free()
+		queue_free()
 

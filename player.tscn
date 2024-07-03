@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://player.gd" id="1_ve33o"]
 [ext_resource type="Script" path="res://Gun_Component.gd" id="2_gls47"]
-[ext_resource type="PackedScene" uid="uid://rmiatprbjkea" path="res://stats.tscn" id="2_o5ksn"]
+[ext_resource type="PackedScene" uid="uid://rmiatprbjkea" path="res://HP.tscn" id="3_t4xu6"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_y4bbw"]
 
@@ -41,7 +41,7 @@ one_shot = true
 [node name="Reload_Time" type="Timer" parent="TwistPivot/PitchPivot/Gun Component"]
 one_shot = true
 
-[node name="HP" parent="." instance=ExtResource("2_o5ksn")]
+[node name="HP" parent="." instance=ExtResource("3_t4xu6")]
 
 [node name="Floor Detection" type="ShapeCast3D" parent="."]
 transform = Transform3D(0.9, 0, 0, 0, 0.208, 0, 0, 0, 0.9, 0, 0.116593, 0)

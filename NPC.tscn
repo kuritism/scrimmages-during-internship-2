@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://bsyldo33lixi2"]
 
-[ext_resource type="PackedScene" uid="uid://rmiatprbjkea" path="res://stats.tscn" id="1_irp4p"]
+[ext_resource type="PackedScene" uid="uid://rmiatprbjkea" path="res://HP.tscn" id="1_irp4p"]
 [ext_resource type="Script" path="res://NPC.gd" id="1_q0gi4"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_pd5v0"]

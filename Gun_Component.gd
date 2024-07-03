@@ -6,7 +6,7 @@ var can_fire = true
 @export var num_reloads : int = 3
 @export var chamber_time : float = 0.3
 @export var reload_time : float = 1
-@export var bullet_speed : float = 20
+@export var bullet_speed : int = 20
 @export var bullet_damage : int = 10
 @export var bullet_spread : float
 @export var shell_amount : int = 1
@@ -23,7 +23,7 @@ func attempt_fire():
 		var angle = rotation
 		print(angle)
 		add_child(bullet)
-		bullet.setup(bullet_damage)
+		bullet.setup(bullet_damage, bullet_speed)
 		bullet.position.x=position.x
 		bullet.position.y=position.y - 0.5
 		bullet.position.z=position.z + 1.5
