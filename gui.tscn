@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://b7vfxuh00v87p"]
+[gd_scene load_steps=3 format=3 uid="uid://b7vfxuh00v87p"]
 
 [ext_resource type="Script" path="res://GUI.gd" id="1_1q5o7"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_euy7x"]
+load_path = "res://.godot/imported/crosshair.png-e2d280466fe8c13ec24a82a9511f7ec8.ctex"
 
 [node name="GUI" type="Control"]
 layout_mode = 3
@@ -22,12 +25,22 @@ color = Color(0.733667, 0.53, 1, 1)
 layout_mode = 0
 offset_right = 414.0
 offset_bottom = 261.0
-text = "test"
+text = "HP BAR"
 
 [node name="AMMOLabel" type="Label" parent="."]
 layout_mode = 0
-offset_left = 1066.0
-offset_top = 610.0
-offset_right = 1106.0
-offset_bottom = 633.0
-text = "Test"
+offset_left = 1736.0
+offset_top = 996.0
+offset_right = 1789.0
+offset_bottom = 1019.0
+text = "AMMO"
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 2
+offset_left = 532.0
+offset_top = 299.0
+offset_right = 1386.0
+offset_bottom = 779.0
+texture = SubResource("CompressedTexture2D_euy7x")
+expand_mode = 1
+stretch_mode = 5
