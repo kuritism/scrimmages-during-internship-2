@@ -7,8 +7,9 @@ extends RigidBody3D
 @onready var enchantments = null
 @onready var enchant_damp = 1
 func setup(gun_basis, enchants):
-	
-	enchantments = enchants
+	if enchants:
+		enchantments = enchants.duplicate()
+		add_child(enchantments)
 	#Math (Bigger Decimal = More Dampening)
 	enchant_damp = 0.5 + 0.5*(enchantments.get_child_count())
 	

@@ -16,11 +16,12 @@ one_shot = true
 
 [node name="Enchantments" type="Node3D" parent="."]
 
-[node name="Baisc Upgrade" type="Node3D" parent="Enchantments"]
+[node name="Fermutations" type="Node3D" parent="Enchantments"]
 script = ExtResource("2_qgv5o")
 
-[node name="Baisc Upgrade2" type="Node3D" parent="Enchantments"]
-script = ExtResource("2_qgv5o")
+[node name="Status Effect" type="Timer" parent="Enchantments/Fermutations"]
+wait_time = 0.5
 
 [connection signal="timeout" from="Chamber_Time" to="." method="_on_chamber_time_timeout"]
 [connection signal="timeout" from="Reload_Time" to="." method="_on_reload_time_timeout"]
+[connection signal="timeout" from="Enchantments/Fermutations/Status Effect" to="Enchantments/Fermutations" method="_on_timer_timeout"]

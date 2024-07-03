@@ -9,7 +9,7 @@ var can_fire = true
 @export var bullet_speed : int = 20
 @export var bullet_damage : int = 10
 @export var bullet_spread : float
-@export var shell_amount : int = 3
+@export var shell_amount : int = 1
 @export var num_bullets = mag_size
 @export var additional_bullets = mag_size * num_reloads
 # Called when the node enters the scene tree for the first time.
@@ -23,6 +23,8 @@ func attempt_fire():
 		var angle = rotation
 		print(angle)
 		add_child(bullet)
+		bullet.bullet_damage = bullet_damage
+		bullet.bullet_speed = bullet_speed
 		bullet.setup(global_transform.basis.z, $Enchantments)
 		bullet.position.x=position.x
 		bullet.position.y=position.y - 0.5
