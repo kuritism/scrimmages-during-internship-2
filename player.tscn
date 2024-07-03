@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://drnstqe6wqpm1"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_ve33o"]
-[ext_resource type="PackedScene" uid="uid://ul50bv57ob75" path="res://gun_component.tscn" id="2_ke0wt"]
-[ext_resource type="PackedScene" uid="uid://rmiatprbjkea" path="res://HP.tscn" id="3_t4xu6"]
+[ext_resource type="PackedScene" path="res://gun_component.tscn" id="2_ke0wt"]
+[ext_resource type="PackedScene" uid="uid://dpbmf4ekv526i" path="res://stats.tscn" id="3_t4xu6"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_y4bbw"]
 
@@ -29,6 +29,7 @@ shape = SubResource("CapsuleShape3D_3eqj2")
 [node name="Camera3D" type="Camera3D" parent="TwistPivot/PitchPivot"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.499952, -0.495036)
 current = true
+fov = 90.0
 
 [node name="Gun Component" parent="TwistPivot/PitchPivot" instance=ExtResource("2_ke0wt")]
 
