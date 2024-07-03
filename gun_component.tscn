@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://ul50bv57ob75"]
+
+[ext_resource type="Script" path="res://Gun_Component.gd" id="1_6c1tx"]
+[ext_resource type="Script" path="res://Baisc Upgrade.gd" id="2_qgv5o"]
+
+[node name="Gun Component" type="Node3D"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.5, -1.5)
+script = ExtResource("1_6c1tx")
+bullet_damage = 150
+
+[node name="Chamber_Time" type="Timer" parent="."]
+one_shot = true
+
+[node name="Reload_Time" type="Timer" parent="."]
+one_shot = true
+
+[node name="Enchantments" type="Node3D" parent="."]
+
+[node name="Baisc Upgrade" type="Node3D" parent="Enchantments"]
+script = ExtResource("2_qgv5o")
+
+[connection signal="timeout" from="Chamber_Time" to="." method="_on_chamber_time_timeout"]
+[connection signal="timeout" from="Reload_Time" to="." method="_on_reload_time_timeout"]

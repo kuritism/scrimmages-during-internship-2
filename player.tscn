@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://drnstqe6wqpm1"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_ve33o"]
-[ext_resource type="Script" path="res://Gun_Component.gd" id="2_gls47"]
+[ext_resource type="PackedScene" uid="uid://ul50bv57ob75" path="res://gun_component.tscn" id="2_ke0wt"]
 [ext_resource type="PackedScene" uid="uid://rmiatprbjkea" path="res://HP.tscn" id="3_t4xu6"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_y4bbw"]
@@ -30,16 +30,7 @@ shape = SubResource("CapsuleShape3D_3eqj2")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.499952, -0.495036)
 current = true
 
-[node name="Gun Component" type="Node3D" parent="TwistPivot/PitchPivot"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.5, -1.5)
-script = ExtResource("2_gls47")
-bullet_damage = 150
-
-[node name="Chamber_Time" type="Timer" parent="TwistPivot/PitchPivot/Gun Component"]
-one_shot = true
-
-[node name="Reload_Time" type="Timer" parent="TwistPivot/PitchPivot/Gun Component"]
-one_shot = true
+[node name="Gun Component" parent="TwistPivot/PitchPivot" instance=ExtResource("2_ke0wt")]
 
 [node name="HP" parent="." instance=ExtResource("3_t4xu6")]
 
@@ -47,6 +38,3 @@ one_shot = true
 transform = Transform3D(0.9, 0, 0, 0, 0.208, 0, 0, 0, 0.9, 0, 0.116593, 0)
 shape = SubResource("CylinderShape3D_xlftk")
 target_position = Vector3(0, -4.5, 0)
-
-[connection signal="timeout" from="TwistPivot/PitchPivot/Gun Component/Chamber_Time" to="TwistPivot/PitchPivot/Gun Component" method="_on_chamber_time_timeout"]
-[connection signal="timeout" from="TwistPivot/PitchPivot/Gun Component/Reload_Time" to="TwistPivot/PitchPivot/Gun Component" method="_on_reload_time_timeout"]

@@ -23,11 +23,10 @@ func attempt_fire():
 		var angle = rotation
 		print(angle)
 		add_child(bullet)
-		bullet.setup(bullet_damage, bullet_speed)
+		bullet.setup(global_transform.basis.z, $Enchantments)
 		bullet.position.x=position.x
 		bullet.position.y=position.y - 0.5
 		bullet.position.z=position.z + 1.5
-		bullet.apply_central_force(global_transform.basis.z * bullet_speed * 300)
 		bullet.reparent(root)
 	num_bullets -= 1
 	can_fire = false
