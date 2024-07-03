@@ -6,7 +6,7 @@ var can_fire = true
 @export var num_reloads : int = 3
 @export var chamber_time : float = 0.3
 @export var reload_time : float = 1
-@export var bullet_speed : int = 20
+@export var bullet_speed : int = 50
 @export var bullet_damage : int = 10
 @export var bullet_spread : float
 @export var shell_amount : int = 1
@@ -25,10 +25,10 @@ func attempt_fire():
 		add_child(bullet)
 		bullet.bullet_damage = bullet_damage
 		bullet.bullet_speed = bullet_speed
-		bullet.setup(global_transform.basis.z, $Enchantments)
 		bullet.position.x=position.x
 		bullet.position.y=position.y - 0.5
 		bullet.position.z=position.z + 1.5
+		bullet.setup(global_transform.basis.z, $Enchantments)
 		bullet.reparent(root)
 	num_bullets -= 1
 	can_fire = false

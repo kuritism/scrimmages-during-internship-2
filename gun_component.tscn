@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://ul50bv57ob75"]
 
 [ext_resource type="Script" path="res://Gun_Component.gd" id="1_6c1tx"]
-[ext_resource type="Script" path="res://Baisc Upgrade.gd" id="2_qgv5o"]
+[ext_resource type="PackedScene" uid="uid://bqc6ck631cqrr" path="res://Enchantments/double_trouble.tscn" id="3_vefyi"]
 
 [node name="Gun Component" type="Node3D"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.5, -1.5)
@@ -16,12 +16,7 @@ one_shot = true
 
 [node name="Enchantments" type="Node3D" parent="."]
 
-[node name="Fermutations" type="Node3D" parent="Enchantments"]
-script = ExtResource("2_qgv5o")
-
-[node name="Status Effect" type="Timer" parent="Enchantments/Fermutations"]
-wait_time = 0.5
+[node name="Double Trouble" parent="Enchantments" instance=ExtResource("3_vefyi")]
 
 [connection signal="timeout" from="Chamber_Time" to="." method="_on_chamber_time_timeout"]
 [connection signal="timeout" from="Reload_Time" to="." method="_on_reload_time_timeout"]
-[connection signal="timeout" from="Enchantments/Fermutations/Status Effect" to="Enchantments/Fermutations" method="_on_timer_timeout"]

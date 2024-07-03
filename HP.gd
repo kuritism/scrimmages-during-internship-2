@@ -7,6 +7,8 @@ extends Node3D
 func take_damage(dmg):
 	if SHIELD > 0:
 		SHIELD -= dmg
+		if SHIELD < 0:
+			SHIELD = 0
 	else:
 		HP -= dmg
 		
