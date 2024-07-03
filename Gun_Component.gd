@@ -26,8 +26,8 @@ func attempt_fire():
 		bullet.setup(bullet_damage)
 		bullet.position.x=position.x
 		bullet.position.y=position.y - 0.5
-		bullet.position.z=position.z + 1
-		bullet.apply_central_force(global_transform.basis.z * bullet_speed * 500)
+		bullet.position.z=position.z + 1.5
+		bullet.apply_central_force(global_transform.basis.z * bullet_speed * 300)
 		bullet.reparent(root)
 	num_bullets -= 1
 	can_fire = false

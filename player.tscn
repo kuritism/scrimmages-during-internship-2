@@ -28,10 +28,12 @@ shape = SubResource("CapsuleShape3D_3eqj2")
 
 [node name="Camera3D" type="Camera3D" parent="TwistPivot/PitchPivot"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.499952, -0.495036)
+current = true
 
 [node name="Gun Component" type="Node3D" parent="TwistPivot/PitchPivot"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.5, -1.5)
 script = ExtResource("2_gls47")
+bullet_damage = 150
 
 [node name="Chamber_Time" type="Timer" parent="TwistPivot/PitchPivot/Gun Component"]
 one_shot = true

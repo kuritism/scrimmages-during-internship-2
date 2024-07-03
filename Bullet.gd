@@ -8,4 +8,3 @@ func _ready():
 	print("Fish")
 func setup(bdam):
 	bullet_damage = bdam
-	$CollisionShape3D.disabled = false
