@@ -8,9 +8,9 @@ extends RigidBody3D
 func setup(gun_basis, enchants):
 	enchantments = enchants
 	for enchant in enchantments.get_children():
-		if enchant.has_method("setup"):
+		if enchant.has_method("bullet_setup"):
 			print("Ding dong")
-			enchant.setup(self)
+			enchant.bullet_setup(self)
 			print(bullet_damage)
 	
 	var height = (bullet_speed - (bullet_speed % 10))/10 + 1
