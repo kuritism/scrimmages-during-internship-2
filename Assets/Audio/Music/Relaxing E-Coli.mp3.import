@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dlw36j2fbjq6p"
+path="res://.godot/imported/Relaxing E-Coli.mp3-b3beb5e61f4ef1b33be299b1d2c7e6a3.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/Music/Relaxing E-Coli.mp3"
+dest_files=["res://.godot/imported/Relaxing E-Coli.mp3-b3beb5e61f4ef1b33be299b1d2c7e6a3.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
