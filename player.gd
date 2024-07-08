@@ -9,7 +9,10 @@ var pitch_input := 0.0
 @onready var gun := $"TwistPivot/PitchPivot/Gun Component"
 
 func _ready() -> void:
-	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	if not is_multiplayer_authority(): return
+	
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	$TwistPivot/PitchPivot/Camera3D.current = true
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -45,10 +48,39 @@ func _process(delta: float) -> void:
 		for child in self.get_children():
 			child.queue_free()
 
+@onready var main_menu = $CanvasLayer/MainMenu
+@onready var address_entry = $CanvasLayer/MainMenu/MarginContainer/VBoxContainer
 
+const Player = preload("res://player.tscn")
+const PORT = 9999
+var enet_peer = ENetMultiplayerPeer.new()
 
 func _unhandled_input(event: InputEvent) -> void:
+	if not is_multiplayer_authority(): return
 	if event is InputEventMouseMotion:
 		if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
 			twist_input = - event.relative.x * mouse_sensitivity
 			pitch_input = - event.relative.y * mouse_sensitivity
+
+
+func _on_host_button_pressed():
+	main_menu.hide()
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	enet_peer.create_server(PORT)
+	multiplayer.multiplayer_peer = enet_peer
+	multiplayer.peer_connected.connect(add_player)
+
+	add_player(multiplayer.get_unique_id())
+
+func _on_join_button_2_pressed():
+	main_menu.hide()
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	enet_peer.create_client("localhost", PORT)
+	multiplayer.multiplayer_peer = enet_peer
+
+func add_player(peer_id):
+	var player = Player.instantiate()
+	player.name = str(peer_id)
+	add_child(player)
+
+
