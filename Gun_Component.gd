@@ -1,63 +1,87 @@
 extends Node3D
 var can_fire = true
+var current_select = null
 @onready var instancedBull = load("res://Bullet.tscn")
 @onready var root = get_tree().get_root()  
-@export var mag_size : int = 20
-@export var num_reloads : int = 3
-@export var chamber_time : float = 0.3
-@export var reload_time : float = 1
-@export var bullet_speed : int = 50
-@export var bullet_damage : int = 10
-@export var bullet_spread : float
-@export var shell_amount : int = 1
-@export var num_bullets = mag_size
-@export var additional_bullets = mag_size * num_reloads
+@export var base_stats : Dictionary = {
+	"Mag Size": 20,
+	"Reload Number": 3,
+	"Chamber Time": 3,
+	"Reload Time": 10,
+	"Bullet Damage": 10,
+	"Bullet Speed": 5,
+	"Bullet Life": 1,
+	"Bullet Spread": 1,
+	"Shell Amount": 1
+}
+
+var stats = base_stats.duplicate()
+var num_bullets = stats["Mag Size"]
+var additional_bullets = stats["Mag Size"] * stats["Reload Number"]
 # Called when the node enters the scene tree for the first time.
+func _ready():
+	on_enchant_pickup(null)
 func attempt_fire():
 	if !can_fire:
 		return
 	print("Fire!")
-	for i in range(shell_amount):
+	for i in range(stats["Shell Amount"]):
 		print("Summon!")
 		var bullet = instancedBull.instantiate()
 		var angle = rotation
 		print(angle)
 		add_child(bullet)
-		bullet.bullet_damage = bullet_damage
-		bullet.bullet_speed = bullet_speed
 		bullet.position.x=position.x
 		bullet.position.y=position.y - 0.5
 		bullet.position.z=position.z + 1.5
-		bullet.setup(global_transform.basis.z, $Enchantments)
+		bullet.setup(global_transform.basis.z, $Enchantments, stats)
 		bullet.reparent(root)
 	num_bullets -= 1
 	can_fire = false
 	print(num_bullets)
 	if num_bullets:
 		print("Chamber_Time")
-		$Chamber_Time.start(chamber_time)
+		var time = float(stats["Chamber Time"]) / 10
+		$Chamber_Time.start(time)
 	elif additional_bullets:
 		print("Reload_Time")
-		$Reload_Time.start(reload_time)
+		var time = float(stats["Reload Time"]) / 10
+		$Reload_Time.start(stats)
 
 func attempt_reload():
-	if additional_bullets and num_bullets < mag_size and !$Reload_Time.time_left:
+	if additional_bullets and num_bullets < stats["Mag Size"] and !$Reload_Time.time_left:
 		$Chamber_Time.stop()
-		$Reload_Time.start(reload_time)
+		$Reload_Time.start(stats["Reload Time"] / 10)
 		print("Reload Attempted")
 		can_fire = false
 
+func on_enchant_pickup(new_enchant):
+	stats = base_stats.duplicate()
+	if current_select:
+		current_select = new_enchant
+	else:
+		if new_enchant:
+			$Enchantments.add_child(new_enchant)
+			if $Enchantments.get_child_count() > 2:
+				current_select = new_enchant
+	var enchant_damp = 0.5 + 0.5*($Enchantments.get_child_count())
+	for enchant in $Enchantments.get_children():
+		if enchant.has_method("gun_setup"):
+			var new_stat = enchant.gun_setup(self)
+			print(new_stat)
+			for i in new_stat:
+				stats[i] +=  new_stat[i] / enchant_damp
+			print(stats)
 
 func _on_reload_time_timeout():
 	print("Reload Finish!")
-	if additional_bullets > mag_size - num_bullets:
-		additional_bullets -= mag_size - num_bullets
-		num_bullets = mag_size
+	if additional_bullets > stats["Mag Size"] - num_bullets:
+		additional_bullets -= stats["Mag Size"] - num_bullets
+		num_bullets = stats["Mag Size"]
 	else:
 		num_bullets += additional_bullets
 		additional_bullets = 0
 	can_fire = true
-
 
 func _on_chamber_time_timeout():
 	print("Chamber Finish!")

@@ -2,11 +2,15 @@ extends Node3D
 
 
 @onready var bullet = null
+func gun_setup(gun):
+	var stats = {
+		"Bullet Damage": -5,
+		"Bullet Speed": -10,
+		"Bullet Life": 3
+	}
+	return stats
 func bullet_setup(bullet_obj, enchant_damp):
 	bullet = bullet_obj
-	bullet.bullet_damage -= round(5 / enchant_damp)
-	bullet.bullet_speed -= round(100 / enchant_damp)
-	bullet.bullet_life += round(3 / enchant_damp)
 	$"Status Effect".start()
 	
 
@@ -15,4 +19,4 @@ func onhit(body, enchant_damp):
 
 
 func _on_timer_timeout():
-	bullet.bullet_damage += 5
+	bullet.stats["Bullet Damage"] += 5
