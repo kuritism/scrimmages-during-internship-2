@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://ul50bv57ob75"]
+[gd_scene load_steps=4 format=3 uid="uid://ul50bv57ob75"]
 
 [ext_resource type="Script" path="res://Gun_Component.gd" id="1_6c1tx"]
+[ext_resource type="PackedScene" uid="uid://bif08dwo181n0" path="res://Enchantments/fermutations.tscn" id="3_kn4dp"]
 [ext_resource type="PackedScene" uid="uid://bqc6ck631cqrr" path="res://Enchantments/double_trouble.tscn" id="3_vefyi"]
 
 [node name="Gun Component" type="Node3D"]
@@ -17,6 +18,8 @@ one_shot = true
 [node name="Enchantments" type="Node3D" parent="."]
 
 [node name="Double Trouble" parent="Enchantments" instance=ExtResource("3_vefyi")]
+
+[node name="Fermutations" parent="Enchantments" instance=ExtResource("3_kn4dp")]
 
 [connection signal="timeout" from="Chamber_Time" to="." method="_on_chamber_time_timeout"]
 [connection signal="timeout" from="Reload_Time" to="." method="_on_reload_time_timeout"]
