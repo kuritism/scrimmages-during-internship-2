@@ -46,7 +46,7 @@ func attempt_fire():
 	elif additional_bullets:
 		print("Reload_Time")
 		var time = float(stats["Reload Time"]) / 10
-		$Reload_Time.start(stats)
+		$Reload_Time.start(time)
 
 func attempt_reload():
 	if additional_bullets and num_bullets < stats["Mag Size"] and !$Reload_Time.time_left:
