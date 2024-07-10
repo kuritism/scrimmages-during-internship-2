@@ -40,4 +40,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.39944)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.60904, 1.57629, 0.819533)
 
 [node name="MeshInstance3D2" parent="." instance=ExtResource("4_80kkt")]
-transform = Transform3D(-0.767675, 0.296023, -0.56837, 0.192578, -0.739356, -0.645186, -0.611218, -0.604749, 0.510578, 2.58305, -0.33418, 2.98232)
+transform = Transform3D(0.999999, 0, 0, 0, 0.999999, 0, 0, 0, 1, 2.58305, -0.33418, 2.98232)

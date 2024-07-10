@@ -76,8 +76,10 @@ func on_enchant_pickup(new_enchant):
 				stats[i] +=  new_stat[i] / enchant_damp
 			print(stats)
 	for i in stats:
-		if stats[i] < 0:
-			stats[i] = 0
+		if stats[i] < 1:
+			stats[i] = 1
+	num_bullets = stats["Mag Size"]
+	additional_bullets = stats["Mag Size"] * stats["Reload Number"]
 func _on_reload_time_timeout():
 	print("Reload Finish!")
 	if additional_bullets > stats["Mag Size"] - num_bullets:
