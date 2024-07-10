@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://cyqntj413e1px"]
+[gd_scene load_steps=8 format=3 uid="uid://cyqntj413e1px"]
 
 [ext_resource type="PackedScene" uid="uid://drnstqe6wqpm1" path="res://player.tscn" id="1_lin1h"]
 [ext_resource type="PackedScene" uid="uid://b7vfxuh00v87p" path="res://gui.tscn" id="2_wt8e2"]
 [ext_resource type="PackedScene" uid="uid://bsyldo33lixi2" path="res://NPC.tscn" id="3_ieeyi"]
+[ext_resource type="PackedScene" uid="uid://i5jui61lwf3a" path="res://Pickup.tscn" id="4_80kkt"]
 
 [sub_resource type="Environment" id="Environment_7cvnc"]
 
@@ -37,3 +38,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.39944)
 
 [node name="Player" parent="GUI" instance=ExtResource("1_lin1h")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.60904, 1.57629, 0.819533)
+
+[node name="MeshInstance3D2" parent="." instance=ExtResource("4_80kkt")]
+transform = Transform3D(-0.767675, 0.296023, -0.56837, 0.192578, -0.739356, -0.645186, -0.611218, -0.604749, 0.510578, 2.58305, -0.33418, 2.98232)

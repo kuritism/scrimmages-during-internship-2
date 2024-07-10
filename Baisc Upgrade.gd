@@ -5,7 +5,7 @@ extends Node3D
 func gun_setup(gun):
 	var stats = {
 		"Bullet Damage": -5,
-		"Bullet Speed": -10,
+		"Bullet Speed": -15,
 		"Bullet Life": 3
 	}
 	return stats

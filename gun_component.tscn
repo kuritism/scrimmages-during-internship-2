@@ -1,7 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://ul50bv57ob75"]
+[gd_scene load_steps=2 format=3 uid="uid://ul50bv57ob75"]
 
 [ext_resource type="Script" path="res://Gun_Component.gd" id="1_6c1tx"]
-[ext_resource type="PackedScene" uid="uid://bif08dwo181n0" path="res://Enchantments/fermutations.tscn" id="3_kn4dp"]
 
 [node name="Gun Component" type="Node3D"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.5, -1.5)
@@ -14,8 +13,6 @@ one_shot = true
 one_shot = true
 
 [node name="Enchantments" type="Node3D" parent="."]
-
-[node name="Fermutations" parent="Enchantments" instance=ExtResource("3_kn4dp")]
 
 [connection signal="timeout" from="Chamber_Time" to="." method="_on_chamber_time_timeout"]
 [connection signal="timeout" from="Reload_Time" to="." method="_on_reload_time_timeout"]

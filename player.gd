@@ -45,6 +45,10 @@ func _process(delta: float) -> void:
 		for child in self.get_children():
 			child.queue_free()
 
+func on_enchant_pickup(new_enchant):
+	print("PickUP!")
+	print(new_enchant)
+	gun.on_enchant_pickup(new_enchant)
 
 
 func _unhandled_input(event: InputEvent) -> void:

@@ -9,7 +9,7 @@ var current_select = null
 	"Chamber Time": 3,
 	"Reload Time": 10,
 	"Bullet Damage": 10,
-	"Bullet Speed": 5,
+	"Bullet Speed": 20,
 	"Bullet Life": 1,
 	"Bullet Spread": 1,
 	"Shell Amount": 1
@@ -46,7 +46,7 @@ func attempt_fire():
 	elif additional_bullets:
 		print("Reload_Time")
 		var time = float(stats["Reload Time"]) / 10
-		$Reload_Time.start(stats)
+		$Reload_Time.start(time)
 
 func attempt_reload():
 	if additional_bullets and num_bullets < stats["Mag Size"] and !$Reload_Time.time_left:
@@ -57,13 +57,16 @@ func attempt_reload():
 
 func on_enchant_pickup(new_enchant):
 	stats = base_stats.duplicate()
-	if current_select:
-		current_select = new_enchant
-	else:
-		if new_enchant:
+	
+	if new_enchant:
+		new_enchant = new_enchant.duplicate()
+		if current_select or $Enchantments.get_child_count() > 2:
+			print("Replace")
+			current_select = new_enchant
+		else:
+			print("Add Enchant")
 			$Enchantments.add_child(new_enchant)
-			if $Enchantments.get_child_count() > 2:
-				current_select = new_enchant
+
 	var enchant_damp = 0.5 + 0.5*($Enchantments.get_child_count())
 	for enchant in $Enchantments.get_children():
 		if enchant.has_method("gun_setup"):
@@ -72,7 +75,9 @@ func on_enchant_pickup(new_enchant):
 			for i in new_stat:
 				stats[i] +=  new_stat[i] / enchant_damp
 			print(stats)
-
+	for i in stats:
+		if stats[i] < 0:
+			stats[i] = 0
 func _on_reload_time_timeout():
 	print("Reload Finish!")
 	if additional_bullets > stats["Mag Size"] - num_bullets:
