@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://drnstqe6wqpm1"]
+[gd_scene load_steps=8 format=3 uid="uid://drnstqe6wqpm1"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_ve33o"]
 [ext_resource type="PackedScene" uid="uid://ul50bv57ob75" path="res://gun_component.tscn" id="2_ke0wt"]
 [ext_resource type="PackedScene" uid="uid://rmiatprbjkea" path="res://HP.tscn" id="3_t4xu6"]
+[ext_resource type="PackedScene" uid="uid://b7vfxuh00v87p" path="res://gui.tscn" id="4_yjiyi"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_y4bbw"]
 
@@ -22,6 +23,11 @@ mesh = SubResource("CapsuleMesh_y4bbw")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_3eqj2")
 
+[node name="Floor Detection" type="ShapeCast3D" parent="."]
+transform = Transform3D(0.9, 0, 0, 0, 0.208, 0, 0, 0, 0.9, 0, 0.116593, 0)
+shape = SubResource("CylinderShape3D_xlftk")
+target_position = Vector3(0, -4.5, 0)
+
 [node name="TwistPivot" type="Node3D" parent="."]
 
 [node name="PitchPivot" type="Node3D" parent="TwistPivot"]
@@ -29,13 +35,11 @@ shape = SubResource("CapsuleShape3D_3eqj2")
 [node name="Camera3D" type="Camera3D" parent="TwistPivot/PitchPivot"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.499952, -0.495036)
 current = true
+fov = 90.0
 
 [node name="Gun Component" parent="TwistPivot/PitchPivot" instance=ExtResource("2_ke0wt")]
 bullet_damage = 10
 
-[node name="HP" parent="." instance=ExtResource("3_t4xu6")]
+[node name="GUI" parent="." instance=ExtResource("4_yjiyi")]
 
-[node name="Floor Detection" type="ShapeCast3D" parent="."]
-transform = Transform3D(0.9, 0, 0, 0, 0.208, 0, 0, 0, 0.9, 0, 0.116593, 0)
-shape = SubResource("CylinderShape3D_xlftk")
-target_position = Vector3(0, -4.5, 0)
+[node name="HP" parent="GUI" instance=ExtResource("3_t4xu6")]
