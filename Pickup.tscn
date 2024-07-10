@@ -15,14 +15,14 @@ tracks/0/enabled = true
 tracks/0/path = NodePath(".")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
-tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 0.2, 1, -0.12941, -0.0170371, 0.12941, 0.982963, 0.4, 1, 0.46194, 0.191342, -0.46194, 0.732538, 0.5, 1, -0.326641, -0.326641, 0.78858, 0.405897, 0.8, 1, 0.122735, 0.0220941, -0.136457, 0.982765, 0.9, 1, 0, 0, 0, 1)
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 0.2, 1, -0.12941, -0.0170371, 0.12941, 0.982963, 0.4, 1, 0.46194, 0.191342, -0.46194, 0.732538, 0.5, 1, -0.326641, -0.326641, 0.78858, 0.405897, 0.85, 1, 0.122735, 0.0220941, -0.136457, 0.982765, 0.9, 1, 0, 0, 0, 1)
 tracks/1/type = "scale_3d"
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/path = NodePath(".")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
-tracks/1/keys = PackedFloat32Array(0, 1, 1, 1, 1, 0.25, 1, 1, 1, 1, 0.4, 1, 1.3, 1, 1, 0.6, 1, 0.9, 1, 1, 0.8, 1, 1, 1, 1)
+tracks/1/keys = PackedFloat32Array(0, 1, 1, 1, 1, 0.3, 1, 1, 1, 1, 0.45, 1, 1.4, 0.8, 0.8, 0.6, 1, 0.9, 1, 1, 0.8, 1, 1, 1, 1)
 
 [sub_resource type="Animation" id="Animation_ptexg"]
 length = 0.001
@@ -61,7 +61,7 @@ libraries = {
 "": SubResource("AnimationLibrary_l8qou")
 }
 autoplay = "Pick Up Disco"
-speed_scale = 0.8
+speed_scale = 0.5
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, -0.000189855, -0.000158396, 0.000190001, 1, 0.000726977, 0.000158254, -0.000727111, 1, 0, 0, 0)

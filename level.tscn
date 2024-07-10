@@ -41,3 +41,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.60904, 1.57629, 0.819533)
 
 [node name="MeshInstance3D2" parent="." instance=ExtResource("4_80kkt")]
 transform = Transform3D(0.999999, 0, 0, 0, 0.999999, 0, 0, 0, 1, 2.58305, -0.33418, 2.98232)
+
+[node name="MeshInstance3D3" parent="." instance=ExtResource("4_80kkt")]
+transform = Transform3D(0.999999, 0, 0, 0, 0.999998, 0, 0, 0, 1, -1.1979, -0.30204, 3.68538)
+skeleton = NodePath("../MeshInstance3D2")

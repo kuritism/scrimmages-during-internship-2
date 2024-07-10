@@ -2,7 +2,6 @@ extends Node3D
 var can_fire = true
 var current_select = null
 @onready var instancedBull = load("res://Bullet.tscn")
-@onready var root = get_tree().get_root()  
 @export var base_stats : Dictionary = {
 	"Mag Size": 20,
 	"Reload Number": 3,
@@ -35,7 +34,6 @@ func attempt_fire():
 		bullet.position.y=position.y - 0.5
 		bullet.position.z=position.z + 1.5
 		bullet.setup(global_transform.basis.z, $Enchantments, stats)
-		bullet.reparent(root)
 	num_bullets -= 1
 	can_fire = false
 	print(num_bullets)
@@ -56,9 +54,12 @@ func attempt_reload():
 		can_fire = false
 
 func on_enchant_pickup(new_enchant):
-	stats = base_stats.duplicate()
-	
 	if new_enchant:
+		if $Enchantments.has_node(NodePath(new_enchant.name)):
+			print("No enchant applied")
+			num_bullets = stats["Mag Size"]
+			additional_bullets = stats["Mag Size"] * stats["Reload Number"]
+			return
 		new_enchant = new_enchant.duplicate()
 		if current_select or $Enchantments.get_child_count() > 2:
 			print("Replace")
@@ -66,7 +67,7 @@ func on_enchant_pickup(new_enchant):
 		else:
 			print("Add Enchant")
 			$Enchantments.add_child(new_enchant)
-
+	stats = base_stats.duplicate()
 	var enchant_damp = 0.5 + 0.5*($Enchantments.get_child_count())
 	for enchant in $Enchantments.get_children():
 		if enchant.has_method("gun_setup"):
