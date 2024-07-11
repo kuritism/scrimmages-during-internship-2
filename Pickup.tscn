@@ -1,7 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://i5jui61lwf3a"]
+[gd_scene load_steps=9 format=3 uid="uid://i5jui61lwf3a"]
 
 [ext_resource type="Script" path="res://PickUp.gd" id="1_wxmyj"]
-[ext_resource type="PackedScene" uid="uid://bhjm5cqu45023" path="res://Enchantments/Nodes/fuckyou_todamoon.tscn" id="2_140p1"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_yrwxq"]
 size = Vector3(0.5, 0.5, 0.5)
@@ -22,7 +21,7 @@ tracks/1/enabled = true
 tracks/1/path = NodePath(".")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
-tracks/1/keys = PackedFloat32Array(0, 1, 1, 1, 1, 0.3, 1, 1, 1, 1, 0.45, 1, 1.4, 0.8, 0.8, 0.6, 1, 0.9, 1, 1, 0.8, 1, 1, 1, 1)
+tracks/1/keys = PackedFloat32Array(0, 1, 1, 1, 1, 0.3, 1, 1, 1, 1, 0.45, 1, 1.2, 0.6, 1.2, 0.6, 1, 0.9, 1.2, 0.9, 0.8, 1, 1, 1, 1)
 
 [sub_resource type="Animation" id="Animation_ptexg"]
 length = 0.001
@@ -41,6 +40,7 @@ _data = {
 }
 
 [sub_resource type="BoxMesh" id="BoxMesh_hepga"]
+lightmap_size_hint = Vector2i(10, 15)
 flip_faces = true
 size = Vector3(0.6, 0.6, 0.6)
 
@@ -53,6 +53,7 @@ grow = true
 radius = 0.7
 
 [node name="MeshInstance3D" type="MeshInstance3D"]
+transform = Transform3D(1.18874, 0, 0, 0, 0.622519, 0, 0, 0, 1.18874, 0, 0, 0)
 mesh = SubResource("BoxMesh_yrwxq")
 script = ExtResource("1_wxmyj")
 
@@ -73,9 +74,5 @@ visible = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 shape = SubResource("SphereShape3D_23jfk")
-
-[node name="Enchant" type="Node3D" parent="."]
-
-[node name="LunarLauncher" parent="Enchant" instance=ExtResource("2_140p1")]
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
