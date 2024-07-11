@@ -20,21 +20,22 @@ func setup(gun_basis, enchants, gun_stats):
 		add_child(enchantments)
 		#Math (Bigger Decimal = More Dampening)
 		enchant_damp = 0.5 + 0.5*(enchantments.get_child_count())
-		if stats["Bullet Damage"] < 5:
-			stats["Bullet Damage"] = 5
-		if stats["Bullet Speed"] < 5:
+		if stats["Bullet Damage"] < 1:
+			stats["Bullet Damage"] = 1
+		if stats["Bullet Speed"] < 1:
 			stats["Bullet Speed"] = 1
-	apply_central_force(gun_basis * stats["Bullet Speed"] * 150)
-	for enchant in enchantments.get_children():
-		if enchant.has_method("bullet_setup"):
-			enchant.bullet_setup(self, enchant_damp)
 	
+		for enchant in enchantments.get_children():
+			if enchant.has_method("bullet_setup"):
+				enchant.bullet_setup(self, enchant_damp)
+				
+	apply_central_force(gun_basis * stats["Bullet Speed"] * 150)
 	var height = (stats["Bullet Speed"] - (int(round(stats["Bullet Speed"])) % 10))/10 + 1
 	$"Area3D/CollisionShape3D".shape.height = height
 	$"Area3D/CollisionShape3D".position.z = (height - 1) * 0.125
 	$"Area3D/CollisionShape3D".disabled = false
 	reparent(get_tree().get_root())
-	$Timer.start(stats["Bullet Life"])
+	
 
 func _on_area_3d_body_entered(body):
 	if body.has_node("HP"):
