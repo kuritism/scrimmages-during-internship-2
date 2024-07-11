@@ -1,7 +1,6 @@
-[gd_scene load_steps=11 format=3 uid="uid://cyqntj413e1px"]
+[gd_scene load_steps=6 format=3 uid="uid://cyqntj413e1px"]
 
-[ext_resource type="PackedScene" uid="uid://drnstqe6wqpm1" path="res://player.tscn" id="1_lin1h"]
-[ext_resource type="PackedScene" uid="uid://b7vfxuh00v87p" path="res://gui.tscn" id="2_wt8e2"]
+[ext_resource type="Script" path="res://level.gd" id="1_fvswx"]
 [ext_resource type="PackedScene" uid="uid://bsyldo33lixi2" path="res://NPC.tscn" id="3_ieeyi"]
 [ext_resource type="PackedScene" uid="uid://i5jui61lwf3a" path="res://Pickup.tscn" id="4_80kkt"]
 [ext_resource type="PackedScene" uid="uid://bkledf5kiybk0" path="res://Enchantments/Nodes/lobber.tscn" id="5_uw4c5"]
@@ -15,6 +14,7 @@
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_d3oby"]
 
 [node name="Node3D" type="Node3D"]
+script = ExtResource("1_fvswx")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_7cvnc")
@@ -36,8 +36,9 @@ shape = SubResource("WorldBoundaryShape3D_d3oby")
 
 [node name="NPC" parent="." instance=ExtResource("3_ieeyi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.39944)
+visible = false
 
-[node name="GUI" parent="." instance=ExtResource("2_wt8e2")]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Player" parent="GUI" instance=ExtResource("1_lin1h")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.60904, 1.57629, 0.819533)
@@ -64,3 +65,51 @@ skeleton = NodePath("../MeshInstance3D2")
 [node name="Enchant" type="Node3D" parent="MeshInstance3D4"]
 
 [node name="LunarLauncher" parent="MeshInstance3D4/Enchant" instance=ExtResource("7_ivkei")]
+[node name="MainMenu" type="PanelContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 512.0
+offset_top = 265.0
+offset_right = -512.0
+offset_bottom = -264.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/MainMenu"]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MainMenu/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="Label" type="Label" parent="CanvasLayer/MainMenu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Main Menu"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HostButton" type="Button" parent="CanvasLayer/MainMenu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Host"
+
+[node name="JoinButton" type="Button" parent="CanvasLayer/MainMenu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Join"
+
+[node name="AddressEntry" type="LineEdit" parent="CanvasLayer/MainMenu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+placeholder_text = "Enter Address to Join"
+alignment = 1
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("res://player.tscn")
+spawn_path = NodePath("..")
+
+[connection signal="pressed" from="CanvasLayer/MainMenu/MarginContainer/VBoxContainer/HostButton" to="." method="_on_host_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/MainMenu/MarginContainer/VBoxContainer/JoinButton" to="." method="_on_join_button_pressed"]
+[connection signal="spawned" from="MultiplayerSpawner" to="." method="_on_multiplayer_spawner_spawned"]

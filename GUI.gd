@@ -9,5 +9,5 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 
-	$HPLabel.text = str("HP:" + str($"Player/HP".HP) + "\n" + "Shield:" + str($"Player/HP".SHIELD))
-	$AMMOLabel.text = str(str($"Player/TwistPivot/PitchPivot/Gun Component".num_bullets) + "/" + str($"Player/TwistPivot/PitchPivot/Gun Component".additional_bullets))
+	$HPLabel.text = str("HP:" + str($"HP".HP) + "\n" + "Shield:" + str($"HP".SHIELD))
+	#$AMMOLabel.text = str(str($"TwistPivot/PitchPivot/Gun Component".num_bullets) + "/" + str($"TwistPivot/PitchPivot/Gun Component".additional_bullets))
