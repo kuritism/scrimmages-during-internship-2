@@ -3,7 +3,7 @@ extends Node3D
 @export var HP : int = 100
 @export var SHIELD : int = 50 
 @export var cooldown : float = 1.0 
-
+@rpc("any_peer")
 func take_damage(dmg):
 	if SHIELD > 0:
 		SHIELD -= dmg
