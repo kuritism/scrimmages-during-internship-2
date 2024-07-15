@@ -45,8 +45,9 @@ func _process(delta: float) -> void:
 	)
 	twist_input = 0.0
 	pitch_input = 0.0
+
 	if Input.is_action_pressed("fire"):
-		gun.attempt_fire()
+		gun.attempt_fire.rpc()
 	if Input.is_action_pressed("reload"):
 		gun.attempt_reload()
 
