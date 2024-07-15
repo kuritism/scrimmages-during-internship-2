@@ -9,13 +9,15 @@ var enet_peer = ENetMultiplayerPeer.new()
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	get_tree().set_meta("network_peer", enet_peer)
+
 
 func _on_host_button_pressed():
 	main_menu.hide()
 	
-	enet_peer.create_server(PORT)
+	enet_peer.create_server(PORT,32)
 	multiplayer.multiplayer_peer = enet_peer
+	get_tree().set_network_peer(enet_peer)
 	multiplayer.peer_connected.connect(add_player)
 	multiplayer.peer_disconnected.connect(remove_player)
 	
@@ -28,8 +30,9 @@ func _on_join_button_pressed():
 	
 	enet_peer.create_client(address_entry.text, PORT)
 	multiplayer.multiplayer_peer = enet_peer
+	get_tree().set_network_peer(enet_peer)
 
-	
+
 	
 func add_player(peer_id):
 	print("Ding")
