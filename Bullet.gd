@@ -28,11 +28,12 @@ func setup(gun_basis, enchants):
 	apply_central_force(gun_basis * bullet_speed * 30)
 	$Timer.start(bullet_life)
 
+
 func _on_area_3d_body_entered(body):
 	if body.has_node("HP"):
 		var hp = body.get_node("HP")
 		print("Da damage: " + str(bullet_damage))
-		hp.take_damage(bullet_damage)
+		hp.take_damage(bullet_damage).rpc_id(get_multiplayer_authority())
 	if enchantments:
 		for enchant in enchantments.get_children():
 			if enchant.has_method("onhit"):
