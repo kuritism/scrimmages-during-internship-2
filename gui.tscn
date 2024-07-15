@@ -22,10 +22,14 @@ offset_bottom = 48.0
 color = Color(0.733667, 0.53, 1, 1)
 
 [node name="HPLabel" type="Label" parent="."]
-layout_mode = 0
-offset_right = 414.0
-offset_bottom = 261.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -866.0
+offset_bottom = -459.0
 text = "HP BAR"
+metadata/_edit_use_anchors_ = true
 
 [node name="AMMOLabel" type="Label" parent="."]
 layout_mode = 0
@@ -51,3 +55,15 @@ grow_vertical = 2
 texture = SubResource("CompressedTexture2D_euy7x")
 expand_mode = 1
 stretch_mode = 5
+
+[node name="IPLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -207.0
+offset_right = 207.0
+offset_bottom = 261.0
+grow_horizontal = 2
+text = "Your IP:"
+metadata/_edit_use_anchors_ = true
