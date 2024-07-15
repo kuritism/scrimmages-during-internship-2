@@ -33,7 +33,7 @@ func attempt_fire():
 		bullet.position.x=position.x
 		bullet.position.y=position.y - 0.5
 		bullet.position.z=position.z + 1.5
-		bullet.setup(global_transform.basis.z, $Enchantments, stats)
+		bullet.setup(global_transform.basis.z, $Enchantments.get_children(), stats)
 	num_bullets -= 1
 	can_fire = false
 	print(num_bullets)

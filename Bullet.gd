@@ -11,21 +11,24 @@ extends RigidBody3D
 	"Bullet Spread": 1,
 	"Shell Amount": 1
 }
-@onready var enchantments = null
+
 @onready var enchant_damp = 1
+
+
 func setup(gun_basis, enchants, gun_stats):
 	stats = gun_stats.duplicate()
 	if enchants:
-		enchantments = enchants.duplicate()
-		add_child(enchantments)
-		#Math (Bigger Decimal = More Dampening)
-		enchant_damp = 0.5 + 0.5*(enchantments.get_child_count())
-		if stats["Bullet Damage"] < 1:
-			stats["Bullet Damage"] = 1
-		if stats["Bullet Speed"] < 1:
-			stats["Bullet Speed"] = 1
+		for enchant in enchants:
+			$Enchantments.add_child(enchant.duplicate())
 	
-		for enchant in enchantments.get_children():
+	enchant_damp = 0.5 + 0.5*($Enchantments.get_child_count())
+	
+	if stats["Bullet Damage"] < 1:
+			stats["Bullet Damage"] = 1
+	if stats["Bullet Speed"] < 1:
+		stats["Bullet Speed"] = 1
+	
+	for enchant in $Enchantments.get_children():
 			if enchant.has_method("bullet_setup"):
 				enchant.bullet_setup(self, enchant_damp)
 				
@@ -42,10 +45,9 @@ func _on_area_3d_body_entered(body):
 		var hp = body.get_node("HP")
 		print("Da damage: " + str(stats["Bullet Damage"]))
 		hp.take_damage(stats["Bullet Damage"])
-	if enchantments:
-		for enchant in enchantments.get_children():
-			if enchant.has_method("onhit"):
-				enchant.onhit(body, enchant_damp)
+	for enchant in $Enchantments.get_children():
+		if enchant.has_method("onhit"):
+			enchant.onhit(body, enchant_damp)
 	queue_free()
 
 

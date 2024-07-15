@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://bsyldo33lixi2" path="res://NPC.tscn" id="3_ieeyi"]
 [ext_resource type="PackedScene" uid="uid://i5jui61lwf3a" path="res://Pickup.tscn" id="4_80kkt"]
 [ext_resource type="PackedScene" uid="uid://kf7rkxnbchm0" path="res://Enchantments/Nodes/helix.tscn" id="5_34u14"]
-[ext_resource type="PackedScene" uid="uid://bqc6ck631cqrr" path="res://Enchantments/Nodes/double_trouble.tscn" id="6_lp4o5"]
+[ext_resource type="PackedScene" uid="uid://bkledf5kiybk0" path="res://Enchantments/Nodes/lobber.tscn" id="6_wydxk"]
 
 [sub_resource type="Environment" id="Environment_7cvnc"]
 
@@ -53,5 +53,4 @@ transform = Transform3D(0.999999, 0, 0, 0, 0.999999, 0, 0, 0, 1, 2.58305, -0.334
 
 [node name="Enchant" type="Node3D" parent="MeshInstance3D3"]
 
-[node name="Double Trouble" parent="MeshInstance3D3/Enchant" instance=ExtResource("6_lp4o5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+[node name="Lobber" parent="MeshInstance3D3/Enchant" instance=ExtResource("6_wydxk")]

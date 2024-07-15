@@ -20,7 +20,7 @@ func _on_status_effect_timeout():
 		mini_bullet_stats[i] += stat_changes[i]
 	print(mini_bullet_stats)
 	bullet.add_child(mini_bullet)
-	mini_bullet.setup(bullet.global_transform.basis.z, $Enchantments, mini_bullet_stats)
+	mini_bullet.setup(bullet.global_transform.basis.z, $Enchantments.get_children(), mini_bullet_stats)
 	mini_bullet.reparent(root)
 	mini_bullet.position.x=bullet.position.x
 	mini_bullet.position.y=bullet.position.y
