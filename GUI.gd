@@ -11,3 +11,4 @@ func _process(delta):
 
 	$HPLabel.text = str("HP:" + str($"HP".HP) + "\n" + "Shield:" + str($"HP".SHIELD))
 	#$AMMOLabel.text = str(str($"TwistPivot/PitchPivot/Gun Component".num_bullets) + "/" + str($"TwistPivot/PitchPivot/Gun Component".additional_bullets))
+	$IPLabel.text = str("Your IP: " + str(IP.resolve_hostname(str(OS.get_environment("COMPUTERNAME")),1)))
