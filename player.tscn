@@ -65,7 +65,6 @@ fov = 90.0
 bullet_damage = 10
 
 [node name="GUI" parent="." instance=ExtResource("4_yjiyi")]
-visible = false
 
 [node name="HP" parent="GUI" instance=ExtResource("3_t4xu6")]
 
