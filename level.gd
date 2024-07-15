@@ -4,7 +4,7 @@ extends Node3D
 @onready var address_entry = $CanvasLayer/MainMenu/MarginContainer/VBoxContainer/AddressEntry
 
 const Player = preload("res://player.tscn")
-const PORT = 9998
+const PORT = 9999
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
