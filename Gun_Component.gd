@@ -13,6 +13,7 @@ var can_fire = true
 @export var num_bullets = mag_size
 @export var additional_bullets = mag_size * num_reloads
 # Called when the node enters the scene tree for the first time.
+@rpc("call_local")
 func attempt_fire():
 	if !can_fire:
 		return
