@@ -1,10 +1,13 @@
 extends Control
 
+var settings = load("res://Settings.tscn")
+var settings_instance = settings.instantiate()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	hide()
-
+	add_child(settings_instance)
+	settings_instance.hide()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -19,7 +22,7 @@ func _process(delta):
 
 
 func _on_options_button_pressed():
-	print('options') # Replace with function body.
+	settings_instance.show()
 
 func _on_resume_button_pressed():
 

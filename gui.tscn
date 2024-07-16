@@ -35,11 +35,12 @@ metadata/_edit_use_anchors_ = true
 
 [node name="AMMOLabel" type="Label" parent="."]
 layout_mode = 0
-offset_left = 1736.0
-offset_top = 996.0
-offset_right = 1789.0
-offset_bottom = 1019.0
+offset_left = 1025.0
+offset_top = 634.0
+offset_right = 1078.0
+offset_bottom = 657.0
 text = "AMMO"
+metadata/_edit_use_anchors_ = true
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1

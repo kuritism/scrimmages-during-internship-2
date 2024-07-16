@@ -7,7 +7,7 @@ var settings_instance = settings.instantiate()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	add_sibling(settings_instance)
+	add_child(settings_instance)
 	settings_instance.hide()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
