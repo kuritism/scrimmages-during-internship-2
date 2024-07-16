@@ -25,6 +25,7 @@ func _on_resume_button_pressed():
 
 	hide()
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	hide()
 	#get_tree().paused = false
 	get_parent().can_move = true
 	print('unpawsed')
