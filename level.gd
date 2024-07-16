@@ -63,3 +63,7 @@ func _on_multiplayer_spawner_spawned(node):
 		#"UPNP Port Mapping Failed! Error %s" % map_result)
 	#
 	#print("Success! Join Address: %s" % upnp.query_external_address())
+
+
+func _on_audio_stream_player_finished():
+	print(AudioStreamPlayer.playing)
