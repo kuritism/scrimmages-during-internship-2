@@ -5,10 +5,13 @@ extends Control
 func _ready():
 	pass # Replace with function body.
 
+@rpc("any_peer")
+func update_health():
+	$HPLabel.text = str("HP:" + str($"HP".HP) + "\n" + "Shield:" + str($"HP".SHIELD))
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-
-	$HPLabel.text = str("HP:" + str($"HP".HP) + "\n" + "Shield:" + str($"HP".SHIELD))
+	update_health.rpc()
+		
 	#$AMMOLabel.text = str(str($"TwistPivot/PitchPivot/Gun Component".num_bullets) + "/" + str($"TwistPivot/PitchPivot/Gun Component".additional_bullets))
 	$IPLabel.text = str("Your IP: " + str(IP.resolve_hostname(str(OS.get_environment("COMPUTERNAME")),1)))

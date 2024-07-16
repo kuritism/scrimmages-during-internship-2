@@ -11,7 +11,6 @@ var enet_peer = ENetMultiplayerPeer.new()
 func _process(delta):
 	pass
 
-
 func _on_host_button_pressed():
 	main_menu.hide()
 	
