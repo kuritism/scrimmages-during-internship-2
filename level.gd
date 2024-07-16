@@ -24,11 +24,12 @@ func _on_host_button_pressed():
 
 func _on_join_button_pressed():
 	main_menu.hide()
+
 	
 	enet_peer.create_client(address_entry.text, PORT)
 	multiplayer.multiplayer_peer = enet_peer
 
-	
+
 	
 func add_player(peer_id):
 	print("Ding")
@@ -62,3 +63,7 @@ func _on_multiplayer_spawner_spawned(node):
 		#"UPNP Port Mapping Failed! Error %s" % map_result)
 	#
 	#print("Success! Join Address: %s" % upnp.query_external_address())
+
+
+func _on_audio_stream_player_finished():
+	print(AudioStreamPlayer.playing)

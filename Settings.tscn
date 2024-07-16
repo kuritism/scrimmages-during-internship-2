@@ -1,0 +1,53 @@
+[gd_scene load_steps=2 format=3 uid="uid://blaur4ywytt81"]
+
+[ext_resource type="Script" path="res://Settings.gd" id="1_pq1mi"]
+
+[node name="Settings" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_pq1mi")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1280.0
+offset_bottom = 720.0
+metadata/_edit_use_anchors_ = true
+
+[node name="LeaveButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -137.0
+offset_top = -97.0
+offset_right = 137.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Leave"
+metadata/_edit_use_anchors_ = true
+
+[node name="Volume" type="HSlider" parent="."]
+layout_mode = 0
+offset_left = 59.0
+offset_top = 130.0
+offset_right = 459.0
+offset_bottom = 253.0
+rounded = true
+allow_greater = true
+metadata/_edit_use_anchors_ = true
+
+[node name="TextEdit" type="TextEdit" parent="."]
+layout_mode = 0
+offset_left = 160.0
+offset_top = 94.0
+offset_right = 246.0
+offset_bottom = 152.0
+text = "Volume"
+
+[connection signal="pressed" from="LeaveButton" to="." method="_on_leave_button_pressed"]

@@ -30,8 +30,10 @@ func setup(gun_basis, enchants):
 
 
 func _on_area_3d_body_entered(body):
-	if body.has_node("HP"):
-		var hp = body.get_node("HP")
+	print(body)
+	if body.has_node("GUI"):
+		
+		var hp = body.get_node("./GUI/HP")
 		print("Da damage: " + str(bullet_damage))
 		hp.take_damage(bullet_damage)
 	if enchantments:

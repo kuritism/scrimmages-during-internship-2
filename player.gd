@@ -3,6 +3,7 @@ extends RigidBody3D
 var mouse_sensitivity := 0.001
 var twist_input := 0.0
 var pitch_input := 0.0
+var can_move = true
 
 @onready var twist_pivot := $"TwistPivot"
 @onready var pitch_pivot := $"TwistPivot/PitchPivot"
@@ -23,8 +24,9 @@ func _process(delta: float) -> void:
 	if not is_multiplayer_authority(): return
 	camera.make_current()
 	var input := Vector3.ZERO
-	input.x = Input.get_axis("move_left", "move_right")
-	input.z = Input.get_axis("move_forward", "move_backward")
+	if can_move:
+		input.x = Input.get_axis("move_left", "move_right")
+		input.z = Input.get_axis("move_forward", "move_backward")
 	
 	if $"Floor Detection".is_colliding() and Input.is_action_just_pressed("jump"):
 		input.y = 20
@@ -33,9 +35,9 @@ func _process(delta: float) -> void:
 	
 	var aligned_force = twist_pivot.basis * input
 	
-	if Input.is_action_just_pressed("ui_cancel"):
-		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-		get_tree().quit()
+	#if Input.is_action_just_pressed("ui_cancel"):
+		#Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+
 		
 	twist_pivot.rotate_y(twist_input)
 	pitch_pivot.rotate_x(pitch_input)
