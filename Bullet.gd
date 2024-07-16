@@ -47,10 +47,10 @@ func _on_area_3d_body_entered(body):
 	if body.has_node("GUI"):
 		
 		var hp = body.get_node("./GUI/HP")
-		print("Da damage: " + str(bullet_damage))
-		hp.take_damage(bullet_damage)
-	if enchantments:
-		for enchant in enchantments.get_children():
+		print("Da damage: " + str(stats["Bullet Damage"]))
+		hp.take_damage(stats["Bullet Damage"])
+	if $Enchantments.get_children():
+		for enchant in $Enchantments.get_children():
 			if enchant.has_method("onhit"):
 				enchant.onhit(body, enchant_damp)
 	queue_free()
