@@ -13,5 +13,5 @@ func update_health():
 func _process(delta):
 	update_health.rpc()
 		
-	$AMMOLabel.text = str(str(GunComponent.num_bullets) + "/" + str(GunComponent.additional_bullets))
+#	$AMMOLabel.text = str(str(GunComponent.num_bullets) + "/" + str(GunComponent.additional_bullets))
 	$IPLabel.text = str("Your IP: " + str(IP.resolve_hostname(str(OS.get_environment("COMPUTERNAME")),1)))
