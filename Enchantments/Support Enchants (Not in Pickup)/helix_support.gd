@@ -25,4 +25,4 @@ func _physics_process(delta):
 		bullet.apply_central_force(Vector3(cos(change), 0, sin(change)) * -100 * dist)
 	var v2 = bullet.position - inital
 	var dist_from_axis = axis.dot(v2) * 10
-	bullet.apply_central_force(Vector3(cos(change), 0, sin(change)) * dist * -dist_from_axis * 5)
+	bullet.apply_central_force(Vector3(cos(change), 0, sin(change)) * dist * -dist_from_axis)

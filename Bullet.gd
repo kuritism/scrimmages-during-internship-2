@@ -52,7 +52,8 @@ func _on_area_3d_body_entered(body):
 	queue_free()
 
 func _physics_process(_delta):
-	look_at(position - get_linear_velocity(), Vector3.UP)
+	if get_linear_velocity():
+		look_at(position - get_linear_velocity(), Vector3.UP)
 		
 func _on_timer_timeout():
 	queue_free()
