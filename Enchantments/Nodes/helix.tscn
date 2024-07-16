@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://kf7rkxnbchm0"]
+
+[ext_resource type="Script" path="res://Enchantments/helix.gd" id="1_0tjwm"]
+
+[node name="Helix" type="Node3D"]
+script = ExtResource("1_0tjwm")

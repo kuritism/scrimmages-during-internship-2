@@ -1,32 +1,45 @@
 extends RigidBody3D
 
-@onready var bullet_speed : int = 50
-@onready var bullet_damage : int = 10
-@onready var bullet_life : int = 1
-@onready var bullet_spread : float
-@onready var hp_comp = preload("res://HP.tscn")
-@onready var enchantments = null
+@export var stats : Dictionary = {
+	"Mag Size": 20,
+	"Reload Number": 3,
+	"Chamber Time": 3,
+	"Reload Time": 10,
+	"Bullet Damage": 10,
+	"Bullet Speed": 5,
+	"Bullet Life": 1,
+	"Bullet Spread": 1,
+	"Shell Amount": 1
+}
+
 @onready var enchant_damp = 1
-func setup(gun_basis, enchants):
+
+
+func setup(gun_basis, enchants, gun_stats):
+	stats = gun_stats.duplicate()
 	if enchants:
-		enchantments = enchants.duplicate()
-		add_child(enchantments)
-		#Math (Bigger Decimal = More Dampening)
-		enchant_damp = 0.5 + 0.5*(enchantments.get_child_count())
+		for enchant in enchants:
+			$Enchantments.add_child(enchant.duplicate())
 	
-		for enchant in enchantments.get_children():
+	enchant_damp = 0.5 + 0.5*($Enchantments.get_child_count())
+	
+	if stats["Bullet Damage"] < 1:
+			stats["Bullet Damage"] = 1
+	if stats["Bullet Speed"] < 1:
+		stats["Bullet Speed"] = 1
+	apply_central_force(gun_basis * stats["Bullet Speed"] * 150)
+	for enchant in $Enchantments.get_children():
 			if enchant.has_method("bullet_setup"):
 				enchant.bullet_setup(self, enchant_damp)
-		if bullet_damage < 5:
-			bullet_damage = 5
-		if bullet_speed < 5:
-			bullet_speed = 5
-	var height = (bullet_speed - (bullet_speed % 10))/10 + 1
+				
+	
+	var height = (stats["Bullet Speed"] - (int(round(stats["Bullet Speed"])) % 10))/10 + 1
 	$"Area3D/CollisionShape3D".shape.height = height
 	$"Area3D/CollisionShape3D".position.z = (height - 1) * 0.125
 	$"Area3D/CollisionShape3D".disabled = false
-	apply_central_force(gun_basis * bullet_speed * 30)
-	$Timer.start(bullet_life)
+	$"Timer".start(stats["Bullet Life"])
+	reparent(get_tree().get_root())
+	
 
 
 func _on_area_3d_body_entered(body):
@@ -42,6 +55,9 @@ func _on_area_3d_body_entered(body):
 				enchant.onhit(body, enchant_damp)
 	queue_free()
 
-
+func _physics_process(_delta):
+	if get_linear_velocity():
+		look_at(position - get_linear_velocity(), Vector3.UP)
+		
 func _on_timer_timeout():
 	queue_free()

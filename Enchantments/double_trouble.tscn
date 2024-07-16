@@ -1,8 +1,0 @@
-[gd_scene format=3 uid="uid://bqc6ck631cqrr"]
-
-[node name="Double Trouble" type="Node3D"]
-
-[node name="Status Effect" type="Timer" parent="."]
-wait_time = 0.3
-
-[connection signal="timeout" from="Status Effect" to="." method="_on_status_effect_timeout"]

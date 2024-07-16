@@ -1,0 +1,76 @@
+[gd_scene load_steps=9 format=3 uid="uid://i5jui61lwf3a"]
+
+[ext_resource type="Script" path="res://PickUp.gd" id="1_wxmyj"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_yrwxq"]
+size = Vector3(0.5, 0.5, 0.5)
+
+[sub_resource type="Animation" id="Animation_hokev"]
+resource_name = "Pick Up Disco"
+loop_mode = 1
+tracks/0/type = "rotation_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 0.2, 1, -0.12941, -0.0170371, 0.12941, 0.982963, 0.4, 1, 0.46194, 0.191342, -0.46194, 0.732538, 0.5, 1, -0.326641, -0.326641, 0.78858, 0.405897, 0.85, 1, 0.122735, 0.0220941, -0.136457, 0.982765, 0.9, 1, 0, 0, 0, 1)
+tracks/1/type = "scale_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 1, 1, 1, 0.3, 1, 1, 1, 1, 0.45, 1, 1.2, 0.6, 1.2, 0.6, 1, 0.9, 1.2, 0.9, 0.8, 1, 1, 1, 1)
+
+[sub_resource type="Animation" id="Animation_ptexg"]
+length = 0.001
+tracks/0/type = "rotation_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_l8qou"]
+_data = {
+"Pick Up Disco": SubResource("Animation_hokev"),
+"RESET": SubResource("Animation_ptexg")
+}
+
+[sub_resource type="BoxMesh" id="BoxMesh_hepga"]
+lightmap_size_hint = Vector2i(10, 15)
+flip_faces = true
+size = Vector3(0.6, 0.6, 0.6)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7ccsh"]
+shading_mode = 0
+albedo_color = Color(0, 0, 0, 1)
+grow = true
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_23jfk"]
+radius = 0.7
+
+[node name="MeshInstance3D" type="MeshInstance3D"]
+mesh = SubResource("BoxMesh_yrwxq")
+script = ExtResource("1_wxmyj")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_l8qou")
+}
+autoplay = "Pick Up Disco"
+speed_scale = 0.5
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, -0.000189855, -0.000158396, 0.000190001, 1, 0.000726977, 0.000158254, -0.000727111, 1, 0, 0, 0)
+mesh = SubResource("BoxMesh_hepga")
+surface_material_override/0 = SubResource("StandardMaterial3D_7ccsh")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_23jfk")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

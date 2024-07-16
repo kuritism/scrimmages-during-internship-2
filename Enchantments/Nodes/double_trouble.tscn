@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://bqc6ck631cqrr"]
+
+[ext_resource type="Script" path="res://Enchantments/doubletrouble.gd" id="1_5cmme"]
+[ext_resource type="Script" path="res://Enchantments/Miniaturize.gd" id="2_f6nhc"]
+
+[node name="Double Trouble" type="Node3D"]
+script = ExtResource("1_5cmme")
+
+[node name="Status Effect" type="Timer" parent="."]
+wait_time = 0.2
+
+[node name="Enchantments" type="Node3D" parent="."]
+
+[node name="Miniaturize" type="Node3D" parent="Enchantments"]
+script = ExtResource("2_f6nhc")
+
+[connection signal="timeout" from="Status Effect" to="." method="_on_status_effect_timeout"]

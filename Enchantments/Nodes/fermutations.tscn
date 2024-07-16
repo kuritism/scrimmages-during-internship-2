@@ -1,9 +1,9 @@
 [gd_scene load_steps=2 format=3 uid="uid://bif08dwo181n0"]
 
-[ext_resource type="Script" path="res://Baisc Upgrade.gd" id="1_as74d"]
+[ext_resource type="Script" path="res://Enchantments/fermutations.gd" id="1_fakum"]
 
 [node name="Fermutations" type="Node3D"]
-script = ExtResource("1_as74d")
+script = ExtResource("1_fakum")
 
 [node name="Status Effect" type="Timer" parent="."]
 wait_time = 0.5
