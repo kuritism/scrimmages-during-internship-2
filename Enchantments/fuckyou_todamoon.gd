@@ -9,4 +9,4 @@ func gun_setup(gun):
 	return stats
 func onhit(body, enchant_damp):
 	if body is RigidBody3D:
-		body.apply_central_force(global_transform.basis.z * Vector3(100, 0, 100) + Vector3(0, 500, 0))
+		body.apply_central_force(global_transform.basis.z * Vector3(1000/2, 0, 1000/2) + Vector3(0, 5000/2, 0))

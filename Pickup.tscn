@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://i5jui61lwf3a"]
+[gd_scene load_steps=10 format=3 uid="uid://i5jui61lwf3a"]
 
 [ext_resource type="Script" path="res://PickUp.gd" id="1_wxmyj"]
 
@@ -52,7 +52,12 @@ grow = true
 [sub_resource type="SphereShape3D" id="SphereShape3D_23jfk"]
 radius = 0.7
 
-[node name="MeshInstance3D" type="MeshInstance3D"]
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_p74lw"]
+properties/0/path = NodePath("../..:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+
+[node name="Pickup" type="MeshInstance3D"]
 mesh = SubResource("BoxMesh_yrwxq")
 script = ExtResource("1_wxmyj")
 
@@ -72,5 +77,9 @@ surface_material_override/0 = SubResource("StandardMaterial3D_7ccsh")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 shape = SubResource("SphereShape3D_23jfk")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+root_path = NodePath("../Area3D/CollisionShape3D")
+replication_config = SubResource("SceneReplicationConfig_p74lw")
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
