@@ -31,8 +31,8 @@ func _process(delta: float) -> void:
 	twist_pivot.rotate_y(twist_input)
 	pitch_pivot.rotate_x(pitch_input)
 	pitch_pivot.rotation.x = clamp(pitch_pivot.rotation.x, 
-		deg_to_rad(-90), 
-		deg_to_rad(90)
+		deg_to_rad(-80), 
+		deg_to_rad(80)
 	)
 	twist_input = 0.0
 	pitch_input = 0.0

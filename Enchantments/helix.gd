@@ -6,7 +6,9 @@ var instancedBull = preload("res://Bullet.tscn")
 var time = 0
 var osolations = 2
 var dist = 0.2
-var dir = null
+var axis = Vector3(0, 0, 0)
+var change = Vector3(0, 0, 0)
+var inital = Vector3(0, 0, 0)
 func gun_setup(gun):
 	var stats = {
 		"Bullet Speed": 5,
@@ -25,20 +27,23 @@ func bullet_setup(bullet_obj, enchant_damp):
 	set_for_removal.queue_free()
 	
 	clone_enchants.add_child(helix_support.instantiate())
-	osolations = bullet_obj.stats["Bullet Speed"] / 4
-	dist = osolations / 30
+	dist = bullet_obj.stats["Bullet Speed"] / 2
 	
 	bullet_clone.setup(bullet.global_transform.basis.z, clone_enchants.get_children(), bullet.stats)
 	bullet_clone.stats = bullet.stats
 	
 func _physics_process(delta):
-	if !dir:
+	if !axis:
 		if bullet:
-			dir = bullet.get_linear_velocity()
+			var v1 = bullet.get_linear_velocity()
+			axis = (Vector3(0, 1, 0)).cross(v1).normalized()
+			change = (Vector2(v1.x, v1.z).angle() - 1.57)
 		return
-	var change = Vector2(dir.x, dir.z).angle() - 1.57 * sign(cos(3.14 * osolations * time)) * pow(abs(dist * (1 + cos(3.14 * osolations * time + 1.57))), 0.5)
-	bullet.apply_central_force(Vector3(cos(change) * dist, 0, sin(change) * dist)* 1000)
-	time += delta
-	print("Bullet 1")
+	if !inital:
+		inital = bullet.position
+		bullet.apply_central_force(Vector3(cos(change), 0, sin(change)) * 100 * dist)
+	var v2 = bullet.position - inital
+	var dist_from_axis = axis.dot(v2) * 10
+	bullet.apply_central_force(Vector3(cos(change), 0, sin(change)) * dist * -dist_from_axis * 5)
 
 	

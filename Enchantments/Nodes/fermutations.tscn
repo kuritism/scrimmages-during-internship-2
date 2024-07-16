@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bif08dwo181n0"]
 
-[ext_resource type="Script" path="res://Enchantments/Nodes/fermutations.gd" id="1_fakum"]
+[ext_resource type="Script" path="res://Enchantments/fermutations.gd" id="1_fakum"]
 
 [node name="Fermutations" type="Node3D"]
 script = ExtResource("1_fakum")

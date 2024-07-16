@@ -27,16 +27,17 @@ func setup(gun_basis, enchants, gun_stats):
 			stats["Bullet Damage"] = 1
 	if stats["Bullet Speed"] < 1:
 		stats["Bullet Speed"] = 1
-	
+	apply_central_force(gun_basis * stats["Bullet Speed"] * 150)
 	for enchant in $Enchantments.get_children():
 			if enchant.has_method("bullet_setup"):
 				enchant.bullet_setup(self, enchant_damp)
 				
-	apply_central_force(gun_basis * stats["Bullet Speed"] * 150)
+	
 	var height = (stats["Bullet Speed"] - (int(round(stats["Bullet Speed"])) % 10))/10 + 1
 	$"Area3D/CollisionShape3D".shape.height = height
 	$"Area3D/CollisionShape3D".position.z = (height - 1) * 0.125
 	$"Area3D/CollisionShape3D".disabled = false
+	$"Timer".start(stats["Bullet Life"])
 	reparent(get_tree().get_root())
 	
 
@@ -50,6 +51,8 @@ func _on_area_3d_body_entered(body):
 			enchant.onhit(body, enchant_damp)
 	queue_free()
 
-
+func _physics_process(_delta):
+	look_at(position - get_linear_velocity(), Vector3.UP)
+		
 func _on_timer_timeout():
 	queue_free()
