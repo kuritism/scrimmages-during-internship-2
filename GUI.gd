@@ -3,7 +3,7 @@ extends Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	$HPLabel.text = str("HP:" + str($"HP".HP) + "\n" + "Shield:" + str($"HP".SHIELD))
 
 @rpc("any_peer")
 func update_health():
