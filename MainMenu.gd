@@ -1,12 +1,14 @@
 extends Control
 
 var level = load("res://level.tscn")
+var settings = load("res://Settings.tscn")
 var level_instance = level.instantiate()
+var settings_instance = settings.instantiate()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
-
+	add_sibling(settings_instance)
+	settings_instance.hide()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -19,8 +21,8 @@ func _on_play_pressed():
 
 
 func _on_settings_pressed():
-	pass # Replace with function body.
-
+	settings_instance.show()
+	
 
 func _on_quit_pressed():
 	get_tree().quit()
