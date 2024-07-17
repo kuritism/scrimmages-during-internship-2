@@ -111,5 +111,8 @@ skeleton = NodePath("../MeshInstance3D3/MeshInstance3D2")
 [node name="LunarLauncher" parent="MeshInstance3D4/Enchant" instance=ExtResource("9_jta42")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.8867, 0.214793, 21.2159)
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
 [connection signal="pressed" from="CanvasLayer/MainMenu/MarginContainer/VBoxContainer/HostButton" to="." method="_on_host_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/MainMenu/MarginContainer/VBoxContainer/JoinButton" to="." method="_on_join_button_pressed"]
+[connection signal="finished" from="AudioStreamPlayer" to="." method="_on_audio_stream_player_finished"]

@@ -9,7 +9,24 @@ var enet_peer = ENetMultiplayerPeer.new()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	if Input.is_action_just_pressed("next_song"):
+		play_song()
+
+func play_song():
+	var res = null
+	var random_file = "nullimport"
+	var dir_name := "res://Assets/Audio/Music"
+	var dir := DirAccess.open(dir_name)
+	var file_names := dir.get_files()
+	while "import" in random_file:
+		random_file = file_names[randi() % file_names.size()] 
+		res = load("res://Assets/Audio/Music/" + random_file)
+	print(res)
+	
+	$AudioStreamPlayer.stream = res
+	if !$AudioStreamPlayer.playing:
+		$AudioStreamPlayer.play()
+	else: return
 
 func _on_host_button_pressed():
 	main_menu.hide()
@@ -20,6 +37,7 @@ func _on_host_button_pressed():
 	multiplayer.peer_disconnected.connect(remove_player)
 	add_player(multiplayer.get_unique_id())
 	
+	play_song()
 	#upnp_setup()
 
 func _on_join_button_pressed():
@@ -28,7 +46,7 @@ func _on_join_button_pressed():
 	
 	enet_peer.create_client(address_entry.text, PORT)
 	multiplayer.multiplayer_peer = enet_peer
-
+	play_song()
 
 	
 func add_player(peer_id):
@@ -66,4 +84,4 @@ func _on_multiplayer_spawner_spawned(node):
 
 
 func _on_audio_stream_player_finished():
-	print(AudioStreamPlayer.playing)
+	play_song()
