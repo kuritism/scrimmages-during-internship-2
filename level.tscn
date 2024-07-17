@@ -1,10 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://7x0krg7681u2"]
+[gd_scene load_steps=7 format=3 uid="uid://7x0krg7681u2"]
 
 [ext_resource type="Script" path="res://level.gd" id="1_fvswx"]
 [ext_resource type="PackedScene" uid="uid://bsyldo33lixi2" path="res://NPC.tscn" id="3_ieeyi"]
-[ext_resource type="PackedScene" path="res://Pickup.tscn" id="7_qjna4"]
-[ext_resource type="PackedScene" uid="uid://kf7rkxnbchm0" path="res://Enchantments/Nodes/helix.tscn" id="8_t1shx"]
-[ext_resource type="PackedScene" uid="uid://bhjm5cqu45023" path="res://Enchantments/Nodes/fuckyou_todamoon.tscn" id="9_jta42"]
+[ext_resource type="PackedScene" uid="uid://dw84i234ifqxb" path="res://spawner.tscn" id="7_qs3yg"]
 
 [sub_resource type="Environment" id="Environment_7cvnc"]
 
@@ -87,31 +85,19 @@ alignment = 1
 _spawnable_scenes = PackedStringArray("res://player.tscn")
 spawn_path = NodePath("..")
 
-[node name="MeshInstance3D2" parent="." instance=ExtResource("7_qjna4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.20669, 0, 1.76386)
-
-[node name="Enchant" type="Node3D" parent="MeshInstance3D2"]
-
-[node name="Helix" parent="MeshInstance3D2/Enchant" instance=ExtResource("8_t1shx")]
-
-[node name="MeshInstance3D3" parent="." instance=ExtResource("7_qjna4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.41337, 0, -9.52597)
-skeleton = NodePath("../MeshInstance3D2")
-
-[node name="Enchant" type="Node3D" parent="MeshInstance3D3"]
-
-[node name="Helix" parent="MeshInstance3D3/Enchant" instance=ExtResource("8_t1shx")]
-
-[node name="MeshInstance3D4" parent="." instance=ExtResource("7_qjna4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.7041, 0, -8.60576)
-skeleton = NodePath("../MeshInstance3D3/MeshInstance3D2")
-
-[node name="Enchant" type="Node3D" parent="MeshInstance3D4"]
-
-[node name="LunarLauncher" parent="MeshInstance3D4/Enchant" instance=ExtResource("9_jta42")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.8867, 0.214793, 21.2159)
-
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="Spawner" parent="." instance=ExtResource("7_qs3yg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.92896, -1.33418, 8.8921)
+
+[node name="Spawner2" parent="." instance=ExtResource("7_qs3yg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5927, -1.33418, -8.0771)
+
+[node name="Spawner3" parent="." instance=ExtResource("7_qs3yg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.50527, -1.33418, -12.3869)
+
+[node name="Spawner4" parent="." instance=ExtResource("7_qs3yg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.06319, -1.33418, 4.2245)
 
 [connection signal="pressed" from="CanvasLayer/MainMenu/MarginContainer/VBoxContainer/HostButton" to="." method="_on_host_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/MainMenu/MarginContainer/VBoxContainer/JoinButton" to="." method="_on_join_button_pressed"]
