@@ -35,6 +35,33 @@ properties/6/path = NodePath("../TwistPivot/PitchPivot:rotation")
 properties/6/spawn = true
 properties/6/replication_mode = 1
 
+[sub_resource type="Animation" id="Animation_3ilmf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TwistPivot/PitchPivot/Camera3D/gun:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.500235, -0.278949, -0.525338)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TwistPivot/PitchPivot/Camera3D/gun:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 3.13957, 0)]
+}
+
 [sub_resource type="Animation" id="Animation_8rcrf"]
 resource_name = "idle"
 length = 3.0
@@ -64,62 +91,6 @@ tracks/1/keys = {
 "values": [Vector3(0, 3.13957, 0), Vector3(0.0872665, 3.13985, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_3ilmf"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("TwistPivot/PitchPivot/Camera3D/gun:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0.500235, -0.278949, -0.525338)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("TwistPivot/PitchPivot/Camera3D/gun:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 3.13957, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_gfgos"]
-resource_name = "shoot"
-length = 0.4
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("TwistPivot/PitchPivot/Camera3D/gun:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.4),
-"transitions": PackedFloat32Array(0.5, 1),
-"update": 0,
-"values": [Vector3(-0.296129, 3.13962, 0.000656821), Vector3(0.0436332, 3.13971, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("TwistPivot/PitchPivot/Camera3D/gun:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.4),
-"transitions": PackedFloat32Array(0.5, 1),
-"update": 0,
-"values": [Vector3(0.523725, -0.180804, -0.525169), Vector3(0.523725, -0.235176, -0.525169)]
-}
-
 [sub_resource type="Animation" id="Animation_1nsca"]
 resource_name = "move"
 loop_mode = 1
@@ -136,52 +107,9 @@ tracks/0/keys = {
 "values": [Vector3(0.500118, -0.289475, -0.525169), Vector3(0.473146, -0.236421, -0.525169), Vector3(0.500118, -0.289475, -0.525169), Vector3(0.531346, -0.217645, -0.525169)]
 }
 
-[sub_resource type="Animation" id="Animation_j1c4q"]
-resource_name = "sprint"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("TwistPivot/PitchPivot/Camera3D/gun:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0.0436332, 3.13971, 0), Vector3(0.0436332, 3.13971, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("TwistPivot/PitchPivot/Camera3D/gun:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0.523725, -0.235176, -0.525169), Vector3(0.523725, -0.235176, -0.525169)]
-}
-
 [sub_resource type="Animation" id="Animation_oha22"]
 resource_name = "reload"
 length = 2.0
-
-[sub_resource type="Animation" id="Animation_xbaxs"]
-resource_name = "taunt"
-length = 0.8
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("TwistPivot/PitchPivot/Camera3D/gun:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8),
-"transitions": PackedFloat32Array(-2, -2, -2, -2, -2, -2, -2, -2, -2),
-"update": 0,
-"values": [Vector3(0.0436332, 3.13971, 0), Vector3(1.61443, 3.13985, 0), Vector3(3.18523, 3.13985, 0), Vector3(4.75602, 3.13985, 0), Vector3(6.32682, 3.13985, 0), Vector3(7.89761, 3.13985, 0), Vector3(9.46841, 3.13985, 0), Vector3(11.0392, 3.13985, 0), Vector3(12.61, 3.13985, 0)]
-}
 
 [sub_resource type="Animation" id="Animation_65nhy"]
 resource_name = "scope in"
@@ -213,6 +141,78 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(0.5, 1),
 "update": 0,
 "values": [Vector3(-0.000152528, -0.252572, -0.33639), Vector3(0.5, -0.279, -0.525)]
+}
+
+[sub_resource type="Animation" id="Animation_gfgos"]
+resource_name = "shoot"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TwistPivot/PitchPivot/Camera3D/gun:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector3(-0.296129, 3.13962, 0.000656821), Vector3(0.0436332, 3.13971, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TwistPivot/PitchPivot/Camera3D/gun:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector3(0.523725, -0.180804, -0.525169), Vector3(0.523725, -0.235176, -0.525169)]
+}
+
+[sub_resource type="Animation" id="Animation_j1c4q"]
+resource_name = "sprint"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TwistPivot/PitchPivot/Camera3D/gun:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.0436332, 3.13971, 0), Vector3(0.0436332, 3.13971, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TwistPivot/PitchPivot/Camera3D/gun:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.523725, -0.235176, -0.525169), Vector3(0.523725, -0.235176, -0.525169)]
+}
+
+[sub_resource type="Animation" id="Animation_xbaxs"]
+resource_name = "taunt"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TwistPivot/PitchPivot/Camera3D/gun:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8),
+"transitions": PackedFloat32Array(-2, -2, -2, -2, -2, -2, -2, -2, -2),
+"update": 0,
+"values": [Vector3(0.0436332, 3.13971, 0), Vector3(1.61443, 3.13985, 0), Vector3(3.18523, 3.13985, 0), Vector3(4.75602, 3.13985, 0), Vector3(6.32682, 3.13985, 0), Vector3(7.89761, 3.13985, 0), Vector3(9.46841, 3.13985, 0), Vector3(11.0392, 3.13985, 0), Vector3(12.61, 3.13985, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_lkj0u"]
@@ -255,7 +255,7 @@ current = true
 fov = 90.0
 
 [node name="gun" parent="TwistPivot/PitchPivot/Camera3D" instance=ExtResource("2_f3kam")]
-transform = Transform3D(-0.16, 0, 0.00032393, 0, 0.16, 0, -0.00032393, 0, -0.16, 0.500235, -0.278949, -0.525338)
+transform = Transform3D(-0.16, 0, 0.000323625, 0, 0.16, 0, -0.000323625, 0, -0.16, 0.500235, -0.278949, -0.525338)
 
 [node name="Gun Component" parent="TwistPivot/PitchPivot" instance=ExtResource("2_ke0wt")]
 bullet_damage = 10
@@ -323,6 +323,7 @@ libraries = {
 "": SubResource("AnimationLibrary_lkj0u")
 }
 autoplay = "idle"
+playback_default_blend_time = 0.05
 
 [connection signal="pressed" from="Pause/PanelContainer/MarginContainer/VBoxContainer/ResumeButton" to="Pause" method="_on_resume_button_pressed"]
 [connection signal="pressed" from="Pause/PanelContainer/MarginContainer/VBoxContainer/OptionsButton" to="Pause" method="_on_options_button_pressed"]

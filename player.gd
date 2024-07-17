@@ -8,6 +8,7 @@ var pitch_input := 0.0
 @onready var pitch_pivot := $"TwistPivot/PitchPivot"
 @onready var camera := $"TwistPivot/PitchPivot/Camera3D"
 @onready var gun := $"TwistPivot/PitchPivot/Gun Component"
+@onready var anim_player := $AnimationPlayer
 
 func _enter_tree():
 	set_multiplayer_authority(str(name).to_int())
@@ -22,6 +23,7 @@ func _ready():
 func _process(delta: float) -> void:
 	if not is_multiplayer_authority(): return
 	camera.make_current()
+	var input_dir = Input.get_vector("move_left", "move_right", "move_forward", "move_backward")
 	var input := Vector3.ZERO
 	input.x = Input.get_axis("move_left", "move_right")
 	input.z = Input.get_axis("move_forward", "move_backward")
@@ -45,7 +47,7 @@ func _process(delta: float) -> void:
 	)
 	twist_input = 0.0
 	pitch_input = 0.0
-	if Input.is_action_pressed("fire"):
+	if Input.is_action_pressed("fire") and anim_player.current_animation != "shoot":
 		gun.attempt_fire()
 	if Input.is_action_pressed("reload"):
 		gun.attempt_reload()
@@ -54,7 +56,10 @@ func _process(delta: float) -> void:
 		for child in self.get_children():
 			child.queue_free()
 
-
+	if input_dir != Vector2.ZERO:
+		anim_player.play("move")
+	else:
+		anim_player.play("idle")
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
