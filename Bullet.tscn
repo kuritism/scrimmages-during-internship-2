@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://deprsreg5oe4a"]
+[gd_scene load_steps=7 format=3 uid="uid://deprsreg5oe4a"]
 
 [ext_resource type="Script" path="res://Bullet.gd" id="1_wfs8a"]
 
@@ -50,6 +50,7 @@ one_shot = true
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_167ps")
+
 [node name="Enchantments" type="Node3D" parent="."]
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

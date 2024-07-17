@@ -1,19 +1,34 @@
-[gd_scene load_steps=5 format=3 uid="uid://bsyldo33lixi2"]
+[gd_scene load_steps=9 format=3 uid="uid://bsyldo33lixi2"]
 
 [ext_resource type="PackedScene" uid="uid://dpbmf4ekv526i" path="res://stats.tscn" id="1_irp4p"]
 [ext_resource type="Script" path="res://NPC.gd" id="1_q0gi4"]
+[ext_resource type="ArrayMesh" uid="uid://dr1la66iwkc5w" path="res://Assets/Models/obj/emu.obj" id="2_aary8"]
+[ext_resource type="Texture2D" uid="uid://dxxkpax2qfgqb" path="res://Assets/Models/pngs/emuq.png" id="3_2dxub"]
+[ext_resource type="Texture2D" uid="uid://cc7clx1t8w6o1" path="res://Assets/Models/pngs/cardboard.png" id="3_lva3l"]
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_pd5v0"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i22h1"]
+albedo_texture = ExtResource("3_lva3l")
+uv1_scale = Vector3(2, 2, 2)
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_dx5eo"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tbayw"]
+albedo_texture = ExtResource("3_2dxub")
+uv1_scale = Vector3(0.45, 0.45, 0.45)
+uv1_triplanar = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vtvuf"]
+size = Vector3(1.3, 2.25, 0.3)
 
 [node name="NPC" type="RigidBody3D"]
 script = ExtResource("1_q0gi4")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("CapsuleMesh_pd5v0")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.12457, 0)
+mesh = ExtResource("2_aary8")
+surface_material_override/1 = SubResource("StandardMaterial3D_i22h1")
+surface_material_override/2 = SubResource("StandardMaterial3D_tbayw")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("CapsuleShape3D_dx5eo")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00802612, 0.110479, 0)
+shape = SubResource("BoxShape3D_vtvuf")
 
 [node name="HP" parent="." instance=ExtResource("1_irp4p")]

@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dpvom0f05dc5k"
-path.s3tc="res://.godot/imported/Cardboard.png-d44e3d88af3955353264d81a869abaf6.s3tc.ctex"
+uid="uid://dxxkpax2qfgqb"
+path.s3tc="res://.godot/imported/emuq.png-e9b70d46bcc7f7a625b8937399970d37.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Assets/Models/emu/Cardboard.png"
-dest_files=["res://.godot/imported/Cardboard.png-d44e3d88af3955353264d81a869abaf6.s3tc.ctex"]
+source_file="res://Assets/Models/pngs/emuq.png"
+dest_files=["res://.godot/imported/emuq.png-e9b70d46bcc7f7a625b8937399970d37.s3tc.ctex"]
 
 [params]
 
