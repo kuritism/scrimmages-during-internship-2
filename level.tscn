@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://7x0krg7681u2"]
+[gd_scene load_steps=12 format=3 uid="uid://7x0krg7681u2"]
 
 [ext_resource type="Script" path="res://level.gd" id="1_fvswx"]
 [ext_resource type="AudioStream" uid="uid://dlw36j2fbjq6p" path="res://Assets/Audio/Music/Relaxing E-Coli.mp3" id="3_h4iut"]
@@ -6,9 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://fqy4oylc5avf" path="res://Assets/Audio/Music/bell.mp3" id="3_k7mqm"]
 [ext_resource type="AudioStream" uid="uid://dkuqpsxcqdojq" path="res://Assets/Audio/Music/check.mp3" id="4_rn81c"]
 [ext_resource type="AudioStream" uid="uid://dumqgxuclar80" path="res://Assets/Audio/Music/mneow.mp3" id="5_w5a5c"]
-[ext_resource type="PackedScene" uid="uid://i5jui61lwf3a" path="res://Pickup.tscn" id="7_qjna4"]
-[ext_resource type="PackedScene" uid="uid://kf7rkxnbchm0" path="res://Enchantments/Nodes/helix.tscn" id="8_t1shx"]
-[ext_resource type="PackedScene" uid="uid://bhjm5cqu45023" path="res://Enchantments/Nodes/fuckyou_todamoon.tscn" id="9_jta42"]
+[ext_resource type="PackedScene" uid="uid://c8etdviuxfmld" path="res://spawner.tscn" id="7_qs3yg"]
 
 [sub_resource type="Environment" id="Environment_7cvnc"]
 
@@ -50,7 +48,6 @@ shape = SubResource("WorldBoundaryShape3D_d3oby")
 
 [node name="NPC" parent="." instance=ExtResource("3_ieeyi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.39944)
-visible = false
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -106,29 +103,8 @@ spawn_path = NodePath("..")
 stream = SubResource("AudioStreamRandomizer_d7a6e")
 autoplay = true
 
-[node name="MeshInstance3D2" parent="." instance=ExtResource("7_qjna4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.20669, 0, 1.76386)
-
-[node name="Enchant" type="Node3D" parent="MeshInstance3D2"]
-
-[node name="Helix" parent="MeshInstance3D2/Enchant" instance=ExtResource("8_t1shx")]
-
-[node name="MeshInstance3D3" parent="." instance=ExtResource("7_qjna4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.41337, 0, -9.52597)
-skeleton = NodePath("../MeshInstance3D2")
-
-[node name="Enchant" type="Node3D" parent="MeshInstance3D3"]
-
-[node name="Helix" parent="MeshInstance3D3/Enchant" instance=ExtResource("8_t1shx")]
-
-[node name="MeshInstance3D4" parent="." instance=ExtResource("7_qjna4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.7041, 0, -8.60576)
-skeleton = NodePath("../MeshInstance3D3/MeshInstance3D2")
-
-[node name="Enchant" type="Node3D" parent="MeshInstance3D4"]
-
-[node name="LunarLauncher" parent="MeshInstance3D4/Enchant" instance=ExtResource("9_jta42")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.8867, 0.214793, 21.2159)
+[node name="Spawner" parent="." instance=ExtResource("7_qs3yg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, -1.5, -3.5)
 
 [connection signal="pressed" from="CanvasLayer/MainMenu/MarginContainer/VBoxContainer/HostButton" to="." method="_on_host_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/MainMenu/MarginContainer/VBoxContainer/JoinButton" to="." method="_on_join_button_pressed"]

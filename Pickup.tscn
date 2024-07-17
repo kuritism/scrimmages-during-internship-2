@@ -2,9 +2,6 @@
 
 [ext_resource type="Script" path="res://PickUp.gd" id="1_wxmyj"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_yrwxq"]
-size = Vector3(0.5, 0.5, 0.5)
-
 [sub_resource type="Animation" id="Animation_hokev"]
 resource_name = "Pick Up Disco"
 loop_mode = 1
@@ -39,47 +36,56 @@ _data = {
 "RESET": SubResource("Animation_ptexg")
 }
 
-[sub_resource type="BoxMesh" id="BoxMesh_hepga"]
+[sub_resource type="BoxMesh" id="BoxMesh_m85vr"]
+size = Vector3(0.5, 0.5, 0.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_wftpx"]
 lightmap_size_hint = Vector2i(10, 15)
 flip_faces = true
 size = Vector3(0.6, 0.6, 0.6)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7ccsh"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6yycn"]
 shading_mode = 0
 albedo_color = Color(0, 0, 0, 1)
 grow = true
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_23jfk"]
-radius = 0.7
+[sub_resource type="SphereShape3D" id="SphereShape3D_ju0o2"]
+radius = 0.75
 
-[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_p74lw"]
-properties/0/path = NodePath("../..:position")
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_co0jl"]
+properties/0/path = NodePath(".:position")
 properties/0/spawn = true
 properties/0/replication_mode = 1
 
-[node name="Pickup" type="MeshInstance3D"]
-mesh = SubResource("BoxMesh_yrwxq")
+[node name="Pickup" type="Area3D"]
 script = ExtResource("1_wxmyj")
+enchants = "res://Enchantments/Main Enchants/"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../MeshInstance3D")
 libraries = {
 "": SubResource("AnimationLibrary_l8qou")
 }
 autoplay = "Pick Up Disco"
 speed_scale = 0.5
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, -0.000189855, -0.000158396, 0.000190001, 1, 0.000726977, 0.000158254, -0.000727111, 1, 0, 0, 0)
-mesh = SubResource("BoxMesh_hepga")
-surface_material_override/0 = SubResource("StandardMaterial3D_7ccsh")
+[node name="Enchant" type="Node3D" parent="."]
 
-[node name="Area3D" type="Area3D" parent="."]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_m85vr")
+skeleton = NodePath("MeshInstance3D2")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-shape = SubResource("SphereShape3D_23jfk")
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="MeshInstance3D"]
+transform = Transform3D(1, 2.00373e-11, 0, -4.28457e-12, 1, 0, -1.45519e-11, 5.82077e-11, 1, 0, 0, 0)
+mesh = SubResource("BoxMesh_wftpx")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_6yycn")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, -4.70318e-08, 0, -7.68341e-09, 1, 4.42378e-08, -5.96046e-08, -3.81842e-08, 1, 0, 0, 0)
+shape = SubResource("SphereShape3D_ju0o2")
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
-root_path = NodePath("../Area3D/CollisionShape3D")
-replication_config = SubResource("SceneReplicationConfig_p74lw")
+replication_config = SubResource("SceneReplicationConfig_co0jl")
 
-[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://bhjm5cqu45023"]
-
-[ext_resource type="Script" path="res://Enchantments/fuckyou_todamoon.gd" id="1_i72ei"]
-
-[node name="LunarLauncher" type="Node3D"]
-script = ExtResource("1_i72ei")
