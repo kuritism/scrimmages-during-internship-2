@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://drnstqe6wqpm1"]
+[gd_scene load_steps=14 format=3 uid="uid://drnstqe6wqpm1"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_ve33o"]
 [ext_resource type="PackedScene" uid="uid://ul50bv57ob75" path="res://gun_component.tscn" id="2_ke0wt"]
+[ext_resource type="PackedScene" uid="uid://cv0ujkhn6flwq" path="res://gun.blend" id="2_nh83p"]
 [ext_resource type="PackedScene" uid="uid://rmiatprbjkea" path="res://HP.tscn" id="3_t4xu6"]
 [ext_resource type="PackedScene" uid="uid://b7vfxuh00v87p" path="res://gui.tscn" id="4_yjiyi"]
 [ext_resource type="Script" path="res://Pause.gd" id="5_pab2j"]
@@ -35,6 +36,68 @@ properties/6/path = NodePath("../TwistPivot/PitchPivot:rotation")
 properties/6/spawn = true
 properties/6/replication_mode = 1
 
+[sub_resource type="Animation" id="Animation_0fn4r"]
+resource_name = "idle"
+length = 3.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TwistPivot/PitchPivot/Camera3D/gun:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3),
+"transitions": PackedFloat32Array(-2, -2, -2, -2),
+"update": 0,
+"values": [Vector3(0.439441, -0.276552, -0.604584), Vector3(0.439, -0.302, -0.605), Vector3(0.439, -0.252, -0.605), Vector3(0.439441, -0.276552, -0.604584)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TwistPivot/PitchPivot/Camera3D/gun:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3),
+"transitions": PackedFloat32Array(-2, -2, -2, -2),
+"update": 0,
+"values": [Vector3(0, -3.14159, 0), Vector3(0.0418879, -3.14159, 0), Vector3(-0.0418879, -3.14159, 0), Vector3(0, -3.14159, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_7ksd0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TwistPivot/PitchPivot/Camera3D/gun:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.439441, -0.276552, -0.604584)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TwistPivot/PitchPivot/Camera3D/gun:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -3.14159, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vydrk"]
+_data = {
+"RESET": SubResource("Animation_7ksd0"),
+"idle": SubResource("Animation_0fn4r")
+}
+
 [node name="Player" type="RigidBody3D"]
 lock_rotation = true
 linear_damp_mode = 1
@@ -60,6 +123,9 @@ target_position = Vector3(0, -4.5, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.499952, -0.495036)
 current = true
 fov = 90.0
+
+[node name="gun" parent="TwistPivot/PitchPivot/Camera3D" instance=ExtResource("2_nh83p")]
+transform = Transform3D(-0.2, 0, -3.01992e-08, 0, 0.2, 0, 3.01992e-08, 0, -0.2, 0.439441, -0.276552, -0.604584)
 
 [node name="Gun Component" parent="TwistPivot/PitchPivot" instance=ExtResource("2_ke0wt")]
 
@@ -121,6 +187,11 @@ text = "Quit"
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 root_path = NodePath("../MeshInstance3D")
 replication_config = SubResource("SceneReplicationConfig_ro0n3")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_vydrk")
+}
 
 [connection signal="pressed" from="Pause/PanelContainer/MarginContainer/VBoxContainer/ResumeButton" to="Pause" method="_on_resume_button_pressed"]
 [connection signal="pressed" from="Pause/PanelContainer/MarginContainer/VBoxContainer/OptionsButton" to="Pause" method="_on_options_button_pressed"]
