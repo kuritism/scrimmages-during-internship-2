@@ -7,6 +7,7 @@ const Player = preload("res://player.tscn")
 const PORT = 9999
 var enet_peer = ENetMultiplayerPeer.new()
 
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
@@ -37,6 +38,7 @@ func add_player(peer_id):
 	player.name = str(peer_id)
 	print("Ding")
 	print(player.name)
+	print($Selection.character)
 	add_child(player)
 
 func remove_player(peer_id):

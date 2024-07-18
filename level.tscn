@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://7x0krg7681u2"]
+[gd_scene load_steps=15 format=3 uid="uid://7x0krg7681u2"]
 
 [ext_resource type="Script" path="res://level.gd" id="1_fvswx"]
 [ext_resource type="AudioStream" uid="uid://dlw36j2fbjq6p" path="res://Assets/Audio/Music/Relaxing E-Coli.mp3" id="3_h4iut"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://q3ef5jx5idyk" path="res://Pickup.tscn" id="7_qjna4"]
 [ext_resource type="PackedScene" uid="uid://kf7rkxnbchm0" path="res://Enchantments/Nodes/helix.tscn" id="8_t1shx"]
 [ext_resource type="PackedScene" uid="uid://bhjm5cqu45023" path="res://Enchantments/Nodes/fuckyou_todamoon.tscn" id="9_jta42"]
+[ext_resource type="PackedScene" uid="uid://w0pdr5okeml0" path="res://Selection.tscn" id="10_rxubi"]
 
 [sub_resource type="Environment" id="Environment_7cvnc"]
 
@@ -128,6 +129,8 @@ skeleton = NodePath("../MeshInstance3D3/MeshInstance3D2")
 
 [node name="LunarLauncher" parent="MeshInstance3D4/Enchant" instance=ExtResource("9_jta42")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.8867, 0.214793, 21.2159)
+
+[node name="Selection" parent="." instance=ExtResource("10_rxubi")]
 
 [connection signal="pressed" from="CanvasLayer/MainMenu/MarginContainer/VBoxContainer/HostButton" to="." method="_on_host_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/MainMenu/MarginContainer/VBoxContainer/JoinButton" to="." method="_on_join_button_pressed"]

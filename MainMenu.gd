@@ -1,8 +1,8 @@
 extends Control
 
-var level = load("res://level.tscn")
+var selection = load("res://Selection.tscn")
 var settings = load("res://Settings.tscn")
-var level_instance = level.instantiate()
+var selection_instance = selection.instantiate()
 var settings_instance = settings.instantiate()
 
 # Called when the node enters the scene tree for the first time.
@@ -16,7 +16,7 @@ func _process(delta):
 
 
 func _on_play_pressed():
-	add_sibling(level_instance)
+	add_sibling(selection_instance)
 	queue_free() 
 
 

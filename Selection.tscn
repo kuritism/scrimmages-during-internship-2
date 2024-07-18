@@ -1,0 +1,72 @@
+[gd_scene load_steps=3 format=3 uid="uid://w0pdr5okeml0"]
+
+[ext_resource type="Script" path="res://Selection.gd" id="1_bm422"]
+[ext_resource type="Texture2D" uid="uid://bf636850qesw2" path="res://Assets/Textures/GUI/selection.png" id="1_pgaqa"]
+
+[node name="Selection" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_bm422")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 1381.0
+offset_bottom = 720.0
+texture = ExtResource("1_pgaqa")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="bingo" type="TextureButton" parent="TextureRect"]
+layout_mode = 0
+offset_left = 88.0
+offset_top = 96.0
+offset_right = 277.0
+offset_bottom = 330.0
+mouse_default_cursor_shape = 2
+
+[node name="emu" type="TextureButton" parent="TextureRect"]
+layout_mode = 0
+offset_left = 304.0
+offset_top = 98.0
+offset_right = 585.0
+offset_bottom = 337.0
+mouse_default_cursor_shape = 2
+
+[node name="spongebob" type="TextureButton" parent="TextureRect"]
+offset_left = 636.0
+offset_top = 124.0
+offset_right = 762.0
+offset_bottom = 327.0
+mouse_default_cursor_shape = 2
+
+[node name="autism" type="TextureButton" parent="TextureRect"]
+offset_left = 89.0
+offset_top = 367.0
+offset_right = 310.0
+offset_bottom = 612.0
+mouse_default_cursor_shape = 2
+
+[node name="petticoat" type="TextureButton" parent="TextureRect"]
+offset_left = 337.0
+offset_top = 362.0
+offset_right = 552.0
+offset_bottom = 626.0
+mouse_default_cursor_shape = 2
+
+[node name="random" type="TextureButton" parent="TextureRect"]
+offset_left = 574.0
+offset_top = 366.0
+offset_right = 813.0
+offset_bottom = 622.0
+mouse_default_cursor_shape = 2
+
+[connection signal="pressed" from="TextureRect/bingo" to="." method="_on_bingo_pressed"]
+[connection signal="pressed" from="TextureRect/emu" to="." method="_on_emu_pressed"]
+[connection signal="pressed" from="TextureRect/spongebob" to="." method="_on_spongebob_pressed"]
+[connection signal="pressed" from="TextureRect/autism" to="." method="_on_autism_pressed"]
+[connection signal="pressed" from="TextureRect/petticoat" to="." method="_on_petticoat_pressed"]
+[connection signal="pressed" from="TextureRect/random" to="." method="_on_random_pressed"]
