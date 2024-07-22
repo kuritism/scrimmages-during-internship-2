@@ -4,12 +4,12 @@
 [ext_resource type="AudioStream" uid="uid://dlw36j2fbjq6p" path="res://Assets/Audio/Music/Relaxing E-Coli.mp3" id="3_h4iut"]
 [ext_resource type="PackedScene" uid="uid://bsyldo33lixi2" path="res://NPC.tscn" id="3_ieeyi"]
 [ext_resource type="AudioStream" uid="uid://fqy4oylc5avf" path="res://Assets/Audio/Music/bell.mp3" id="3_k7mqm"]
-[ext_resource type="AudioStream" uid="uid://be64ehjcrktyw" path="res://Assets/Audio/Music/check.mp3" id="4_rn81c"]
+[ext_resource type="AudioStream" uid="uid://dkuqpsxcqdojq" path="res://Assets/Audio/Music/check.mp3" id="4_rn81c"]
 [ext_resource type="AudioStream" uid="uid://dumqgxuclar80" path="res://Assets/Audio/Music/mneow.mp3" id="5_w5a5c"]
-[ext_resource type="PackedScene" uid="uid://q3ef5jx5idyk" path="res://Pickup.tscn" id="7_qjna4"]
+[ext_resource type="PackedScene" uid="uid://i5jui61lwf3a" path="res://Pickup.tscn" id="7_qjna4"]
 [ext_resource type="PackedScene" uid="uid://kf7rkxnbchm0" path="res://Enchantments/Nodes/helix.tscn" id="8_t1shx"]
 [ext_resource type="PackedScene" uid="uid://bhjm5cqu45023" path="res://Enchantments/Nodes/fuckyou_todamoon.tscn" id="9_jta42"]
-[ext_resource type="PackedScene" uid="uid://w0pdr5okeml0" path="res://Selection.tscn" id="10_rxubi"]
+[ext_resource type="PackedScene" uid="uid://cb6168l3as5yg" path="res://Selection.tscn" id="10_rxubi"]
 
 [sub_resource type="Environment" id="Environment_7cvnc"]
 

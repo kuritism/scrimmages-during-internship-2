@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://w0pdr5okeml0"]
+[gd_scene load_steps=3 format=3 uid="uid://cb6168l3as5yg"]
 
 [ext_resource type="Script" path="res://Selection.gd" id="1_bm422"]
 [ext_resource type="Texture2D" uid="uid://bf636850qesw2" path="res://Assets/Textures/GUI/selection.png" id="1_pgaqa"]
@@ -37,6 +37,7 @@ offset_bottom = 337.0
 mouse_default_cursor_shape = 2
 
 [node name="spongebob" type="TextureButton" parent="TextureRect"]
+layout_mode = 0
 offset_left = 636.0
 offset_top = 124.0
 offset_right = 762.0
@@ -44,6 +45,7 @@ offset_bottom = 327.0
 mouse_default_cursor_shape = 2
 
 [node name="autism" type="TextureButton" parent="TextureRect"]
+layout_mode = 0
 offset_left = 89.0
 offset_top = 367.0
 offset_right = 310.0
@@ -51,6 +53,7 @@ offset_bottom = 612.0
 mouse_default_cursor_shape = 2
 
 [node name="petticoat" type="TextureButton" parent="TextureRect"]
+layout_mode = 0
 offset_left = 337.0
 offset_top = 362.0
 offset_right = 552.0
@@ -58,6 +61,7 @@ offset_bottom = 626.0
 mouse_default_cursor_shape = 2
 
 [node name="random" type="TextureButton" parent="TextureRect"]
+layout_mode = 0
 offset_left = 574.0
 offset_top = 366.0
 offset_right = 813.0
