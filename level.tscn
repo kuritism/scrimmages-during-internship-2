@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://level.gd" id="1_fvswx"]
 [ext_resource type="PackedScene" uid="uid://bsyldo33lixi2" path="res://NPC.tscn" id="3_ieeyi"]
-[ext_resource type="PackedScene" path="res://spawner.tscn" id="7_qs3yg"]
+[ext_resource type="PackedScene" uid="uid://dw84i234ifqxb" path="res://spawner.tscn" id="7_qs3yg"]
 
 [sub_resource type="Environment" id="Environment_7cvnc"]
 

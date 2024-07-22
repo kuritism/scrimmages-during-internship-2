@@ -36,7 +36,7 @@ func _on_host_button_pressed():
 	multiplayer.peer_connected.connect(add_player)
 	multiplayer.peer_disconnected.connect(remove_player)
 	add_player(multiplayer.get_unique_id())
-	
+	seed(hash("potato"))
 	play_song()
 	#upnp_setup()
 
@@ -46,6 +46,7 @@ func _on_join_button_pressed():
 	
 	enet_peer.create_client(address_entry.text, PORT)
 	multiplayer.multiplayer_peer = enet_peer
+	seed(hash("potato"))
 	play_song()
 
 	
