@@ -1,16 +1,32 @@
-[gd_scene load_steps=7 format=3 uid="uid://7x0krg7681u2"]
+[gd_scene load_steps=15 format=3 uid="uid://7x0krg7681u2"]
 
 [ext_resource type="Script" path="res://level.gd" id="1_fvswx"]
+[ext_resource type="AudioStream" uid="uid://dlw36j2fbjq6p" path="res://Assets/Audio/Music/Relaxing E-Coli.mp3" id="3_h4iut"]
 [ext_resource type="PackedScene" uid="uid://bsyldo33lixi2" path="res://NPC.tscn" id="3_ieeyi"]
+[ext_resource type="AudioStream" uid="uid://fqy4oylc5avf" path="res://Assets/Audio/Music/bell.mp3" id="3_k7mqm"]
+[ext_resource type="AudioStream" uid="uid://dkuqpsxcqdojq" path="res://Assets/Audio/Music/check.mp3" id="4_rn81c"]
+[ext_resource type="AudioStream" uid="uid://dumqgxuclar80" path="res://Assets/Audio/Music/mneow.mp3" id="5_w5a5c"]
 [ext_resource type="PackedScene" uid="uid://i5jui61lwf3a" path="res://Pickup.tscn" id="7_qjna4"]
 [ext_resource type="PackedScene" uid="uid://kf7rkxnbchm0" path="res://Enchantments/Nodes/helix.tscn" id="8_t1shx"]
 [ext_resource type="PackedScene" uid="uid://bhjm5cqu45023" path="res://Enchantments/Nodes/fuckyou_todamoon.tscn" id="9_jta42"]
+[ext_resource type="PackedScene" uid="uid://dslexwhyufcv7" path="res://Selection.tscn" id="10_rxubi"]
 
 [sub_resource type="Environment" id="Environment_7cvnc"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_s3vur"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_d3oby"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_d7a6e"]
+streams_count = 4
+stream_0/stream = ExtResource("3_k7mqm")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("4_rn81c")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("5_w5a5c")
+stream_2/weight = 1.0
+stream_3/stream = ExtResource("3_h4iut")
+stream_3/weight = 1.0
 
 [node name="Level" type="Node3D"]
 script = ExtResource("1_fvswx")
@@ -35,7 +51,6 @@ shape = SubResource("WorldBoundaryShape3D_d3oby")
 
 [node name="NPC" parent="." instance=ExtResource("3_ieeyi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.39944)
-visible = false
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -88,19 +103,34 @@ _spawnable_scenes = PackedStringArray("res://player.tscn")
 spawn_path = NodePath("..")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_d7a6e")
+autoplay = true
 
-[node name="Spawner" parent="." instance=ExtResource("7_qs3yg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.92896, -1.33418, 8.8921)
+[node name="MeshInstance3D2" parent="." instance=ExtResource("7_qjna4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.20669, 0, 1.76386)
 
-[node name="Spawner2" parent="." instance=ExtResource("7_qs3yg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5927, -1.33418, -8.0771)
+[node name="Enchant" type="Node3D" parent="MeshInstance3D2"]
 
-[node name="Spawner3" parent="." instance=ExtResource("7_qs3yg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.50527, -1.33418, -12.3869)
+[node name="Helix" parent="MeshInstance3D2/Enchant" instance=ExtResource("8_t1shx")]
 
-[node name="Spawner4" parent="." instance=ExtResource("7_qs3yg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.06319, -1.33418, 4.2245)
+[node name="MeshInstance3D3" parent="." instance=ExtResource("7_qjna4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.41337, 0, -9.52597)
+skeleton = NodePath("../MeshInstance3D2")
+
+[node name="Enchant" type="Node3D" parent="MeshInstance3D3"]
+
+[node name="Helix" parent="MeshInstance3D3/Enchant" instance=ExtResource("8_t1shx")]
+
+[node name="MeshInstance3D4" parent="." instance=ExtResource("7_qjna4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.7041, 0, -8.60576)
+skeleton = NodePath("../MeshInstance3D3/MeshInstance3D2")
+
+[node name="Enchant" type="Node3D" parent="MeshInstance3D4"]
+
+[node name="LunarLauncher" parent="MeshInstance3D4/Enchant" instance=ExtResource("9_jta42")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.8867, 0.214793, 21.2159)
+
+[node name="Selection" parent="." instance=ExtResource("10_rxubi")]
 
 [connection signal="pressed" from="CanvasLayer/MainMenu/MarginContainer/VBoxContainer/HostButton" to="." method="_on_host_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/MainMenu/MarginContainer/VBoxContainer/JoinButton" to="." method="_on_join_button_pressed"]
-[connection signal="finished" from="AudioStreamPlayer" to="." method="_on_audio_stream_player_finished"]
