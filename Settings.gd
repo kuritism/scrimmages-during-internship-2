@@ -13,3 +13,8 @@ func _process(delta):
 
 func _on_leave_button_pressed():
 	hide() 
+
+
+func _on_volume_value_changed(value):
+	GlobalValues.volume = value
+	print(GlobalValues.volume)
