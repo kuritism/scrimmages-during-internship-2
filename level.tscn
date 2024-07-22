@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://level.gd" id="1_fvswx"]
 [ext_resource type="PackedScene" uid="uid://bsyldo33lixi2" path="res://NPC.tscn" id="3_ieeyi"]
-[ext_resource type="PackedScene" path="res://Pickup.tscn" id="7_qjna4"]
+[ext_resource type="PackedScene" uid="uid://i5jui61lwf3a" path="res://Pickup.tscn" id="7_qjna4"]
 [ext_resource type="PackedScene" uid="uid://kf7rkxnbchm0" path="res://Enchantments/Nodes/helix.tscn" id="8_t1shx"]
 [ext_resource type="PackedScene" uid="uid://bhjm5cqu45023" path="res://Enchantments/Nodes/fuckyou_todamoon.tscn" id="9_jta42"]
 

@@ -11,6 +11,8 @@ var enet_peer = ENetMultiplayerPeer.new()
 func _process(delta):
 	if Input.is_action_just_pressed("next_song"):
 		play_song()
+	$AudioStreamPlayer.volume_db = GlobalValues.volume-100
+
 
 func play_song():
 	var res = null
