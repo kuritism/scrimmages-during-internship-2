@@ -53,11 +53,20 @@ func _on_area_3d_body_entered(body):
 		for enchant in $Enchantments.get_children():
 			if enchant.has_method("onhit"):
 				enchant.onhit(body, enchant_damp)
-	queue_free()
-
+	disable_bullet()
+	
+func disable_bullet():
+	$Area3D.disable_mode = true
+	$"Bullet Mesh".hide()
+	$GPUParticles3D.emitting = false
+	$Timer.start($GPUParticles3D.lifetime)
 func _physics_process(_delta):
 	if get_linear_velocity():
 		look_at(position - get_linear_velocity(), Vector3.UP)
 		
 func _on_timer_timeout():
-	queue_free()
+	if !$Area3D.disable_mode:
+		disable_bullet()
+	else:
+		print("Deleted!")
+		queue_free()

@@ -12,4 +12,5 @@ func _ready():
 func _on_body_entered(body):
 	if body.has_method("on_enchant_pickup"):
 		body.on_enchant_pickup($Enchant.get_child(0))
+		$MultiplayerSynchronizer.queue_free()
 		queue_free()

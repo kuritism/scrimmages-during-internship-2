@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://kf7rkxnbchm0" path="res://Enchantments/Nodes/helix.tscn" id="8_t1shx"]
 [ext_resource type="PackedScene" uid="uid://bhjm5cqu45023" path="res://Enchantments/Nodes/fuckyou_todamoon.tscn" id="9_jta42"]
 [ext_resource type="PackedScene" uid="uid://dslexwhyufcv7" path="res://Selection.tscn" id="10_rxubi"]
+[ext_resource type="PackedScene" uid="uid://dw84i234ifqxb" path="res://spawner.tscn" id="7_qs3yg"]
 
 [sub_resource type="Environment" id="Environment_7cvnc"]
 

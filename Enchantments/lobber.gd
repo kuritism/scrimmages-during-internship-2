@@ -2,7 +2,7 @@ extends Node3D
 var bullet = null
 func gun_setup(gun):
 	var stats = {
-		"Bullet Speed": -10,
+		"Bullet Speed": 10,
 		"Bullet Damage": 10,
 		"Bullet Life": 5,
 	}
