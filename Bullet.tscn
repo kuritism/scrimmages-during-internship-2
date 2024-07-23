@@ -4,16 +4,15 @@
 
 [sub_resource type="SphereMesh" id="SphereMesh_q1yi5"]
 
+[sub_resource type="SphereMesh" id="SphereMesh_8mt1s"]
+flip_faces = true
+radius = 0.6
+height = 1.2
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vij3b"]
 shading_mode = 0
 albedo_color = Color(0, 0, 0, 1)
 grow = true
-
-[sub_resource type="SphereMesh" id="SphereMesh_8mt1s"]
-material = SubResource("StandardMaterial3D_vij3b")
-flip_faces = true
-radius = 0.6
-height = 1.2
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_62014"]
 resource_local_to_scene = true
@@ -23,43 +22,40 @@ properties/0/path = NodePath(".:position")
 properties/0/spawn = true
 properties/0/replication_mode = 1
 
-[sub_resource type="Gradient" id="Gradient_62x63"]
-offsets = PackedFloat32Array(0.0272727, 0.318182, 0.590909)
-colors = PackedColorArray(1, 1, 1, 1, 0.928549, 0.682258, 1.54018e-06, 1, 0.613352, 0, 0.107479, 1)
+[sub_resource type="Gradient" id="Gradient_x150n"]
+offsets = PackedFloat32Array(0, 0.227273, 0.409091, 0.790909)
+colors = PackedColorArray(1, 1, 1, 1, 1, 0.693333, 0.08, 1, 0.84, 0, 0.126, 1, 0.0687983, 0.0687983, 0.0687983, 1)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_2cp0j"]
-gradient = SubResource("Gradient_62x63")
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_36pn5"]
+gradient = SubResource("Gradient_x150n")
 
-[sub_resource type="Curve" id="Curve_0gk38"]
-_data = [Vector2(0.384058, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+[sub_resource type="Curve" id="Curve_u8mxq"]
+_data = [Vector2(0.492754, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="CurveTexture" id="CurveTexture_bjdyb"]
-curve = SubResource("Curve_0gk38")
+[sub_resource type="CurveTexture" id="CurveTexture_hsbvc"]
+curve = SubResource("Curve_u8mxq")
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ub4hu"]
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_v1w80"]
 emission_shape_offset = Vector3(0, 0, -0.1)
 emission_shape = 2
 emission_sphere_radius = 0.1
 direction = Vector3(0, 0, -1)
-spread = 5.0
+spread = 0.0
 initial_velocity_min = 1.0
-initial_velocity_max = 1.0
+initial_velocity_max = 1.5
 gravity = Vector3(0, 0, 0)
-scale_min = 0.1
-scale_max = 0.5
-scale_curve = SubResource("CurveTexture_bjdyb")
-color = Color(0.779291, 0.779291, 0.779291, 1)
-color_ramp = SubResource("GradientTexture1D_2cp0j")
+scale_min = 0.5
+scale_curve = SubResource("CurveTexture_hsbvc")
+color_ramp = SubResource("GradientTexture1D_36pn5")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_67368"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ao0xq"]
 vertex_color_use_as_albedo = true
-grow_amount = 16.0
 
-[sub_resource type="SphereMesh" id="SphereMesh_nosus"]
-material = SubResource("StandardMaterial3D_67368")
-radius = 0.1
-height = 0.2
+[sub_resource type="SphereMesh" id="SphereMesh_o8y7h"]
+material = SubResource("StandardMaterial3D_ao0xq")
+radius = 0.05
+height = 0.1
 
 [node name="Bullet" type="RigidBody3D"]
 mass = 2.0
@@ -68,11 +64,11 @@ center_of_mass_mode = 1
 center_of_mass = Vector3(0, 0, 1)
 script = ExtResource("1_wfs8a")
 
-[node name="Bullet Mesh" type="MeshInstance3D" parent="."]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
 mesh = SubResource("SphereMesh_q1yi5")
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="Bullet Mesh"]
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="MeshInstance3D"]
 mesh = SubResource("SphereMesh_8mt1s")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_vij3b")
@@ -94,8 +90,8 @@ replication_config = SubResource("SceneReplicationConfig_167ps")
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]
 amount = 50
-process_material = SubResource("ParticleProcessMaterial_ub4hu")
-draw_pass_1 = SubResource("SphereMesh_nosus")
+process_material = SubResource("ParticleProcessMaterial_v1w80")
+draw_pass_1 = SubResource("SphereMesh_o8y7h")
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
