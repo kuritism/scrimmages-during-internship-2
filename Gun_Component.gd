@@ -3,8 +3,8 @@ var can_fire = true
 var current_select = null
 @onready var instancedBull = load("res://Bullet.tscn")
 @export var base_stats : Dictionary = {
-	"Mag Size": 20,
-	"Reload Number": 3,
+	"Mag Size": 10,
+	"Reload Number": 2,
 	"Chamber Time": 3,
 	"Reload Time": 10,
 	"Bullet Damage": 10,
@@ -24,6 +24,8 @@ func _ready():
 	
 @rpc("call_local")
 func attempt_fire():
+	print("Bullet Amount")
+	print(num_bullets)
 	if !can_fire:
 		return
 	print("Fire!")
@@ -62,6 +64,9 @@ func on_enchant_pickup(new_enchant):
 			print("No enchant applied")
 			num_bullets = stats["Mag Size"]
 			additional_bullets = stats["Mag Size"] * stats["Reload Number"]
+			can_fire = false
+			$Chamber_Time.stop()
+			$Reload_Time.start(0.5)
 			return
 		new_enchant = new_enchant.duplicate()
 		if current_select or $Enchantments.get_child_count() > 2:
@@ -84,6 +89,10 @@ func on_enchant_pickup(new_enchant):
 			stats[i] = 1
 	num_bullets = stats["Mag Size"]
 	additional_bullets = stats["Mag Size"] * stats["Reload Number"]
+	can_fire = false
+	$Chamber_Time.stop()
+	$Reload_Time.start(0.5)
+
 func _on_reload_time_timeout():
 	print("Reload Finish!")
 	if additional_bullets > stats["Mag Size"] - num_bullets:
