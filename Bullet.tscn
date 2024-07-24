@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://deprsreg5oe4a"]
+[gd_scene load_steps=16 format=3 uid="uid://deprsreg5oe4a"]
 
 [ext_resource type="Script" path="res://Bullet.gd" id="1_wfs8a"]
 
@@ -22,8 +22,15 @@ properties/0/path = NodePath(".:position")
 properties/0/spawn = true
 properties/0/replication_mode = 1
 
+[sub_resource type="Curve" id="Curve_7l40f"]
+_data = [Vector2(0.478261, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_xn8pw"]
+curve = SubResource("Curve_7l40f")
+
 [sub_resource type="Gradient" id="Gradient_x150n"]
-offsets = PackedFloat32Array(0, 0.227273, 0.409091, 0.790909)
+offsets = PackedFloat32Array(0, 0.127273, 0.3, 0.527273)
 colors = PackedColorArray(1, 1, 1, 1, 1, 0.693333, 0.08, 1, 0.84, 0, 0.126, 1, 0.0687983, 0.0687983, 0.0687983, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_36pn5"]
@@ -44,18 +51,27 @@ direction = Vector3(0, 0, -1)
 spread = 0.0
 initial_velocity_min = 1.0
 initial_velocity_max = 1.5
+orbit_velocity_min = 0.2
+orbit_velocity_max = 0.2
 gravity = Vector3(0, 0, 0)
 scale_min = 0.5
 scale_curve = SubResource("CurveTexture_hsbvc")
 color_ramp = SubResource("GradientTexture1D_36pn5")
+alpha_curve = SubResource("CurveTexture_xn8pw")
+turbulence_noise_strength = 9.44
+turbulence_noise_scale = 10.0
+turbulence_influence_max = 0.202
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ao0xq"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i477v"]
+transparency = 1
+shading_mode = 0
 vertex_color_use_as_albedo = true
+grow_amount = 0.1
+point_size = 128.0
 
-[sub_resource type="SphereMesh" id="SphereMesh_o8y7h"]
-material = SubResource("StandardMaterial3D_ao0xq")
-radius = 0.05
-height = 0.1
+[sub_resource type="BoxMesh" id="BoxMesh_vcsto"]
+material = SubResource("StandardMaterial3D_i477v")
+size = Vector3(0.1, 0.1, 0.1)
 
 [node name="Bullet" type="RigidBody3D"]
 mass = 2.0
@@ -89,9 +105,13 @@ replication_config = SubResource("SceneReplicationConfig_167ps")
 [node name="Enchantments" type="Node3D" parent="."]
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]
-amount = 50
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000916481, 0.00645894, 0.00634134)
+amount = 30
+lifetime = 0.5
+visibility_aabb = AABB(-5.06335, -4, -4, 8, 8, 8)
+draw_order = 1
 process_material = SubResource("ParticleProcessMaterial_v1w80")
-draw_pass_1 = SubResource("SphereMesh_o8y7h")
+draw_pass_1 = SubResource("BoxMesh_vcsto")
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

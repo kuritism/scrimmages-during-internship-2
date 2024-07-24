@@ -59,6 +59,7 @@ func disable_bullet():
 	$Area3D.disable_mode = true
 	$"Bullet Mesh".hide()
 	$GPUParticles3D.emitting = false
+	$MultiplayerSynchronizer.queue_free()
 	$Timer.start($GPUParticles3D.lifetime)
 func _physics_process(_delta):
 	if get_linear_velocity():
